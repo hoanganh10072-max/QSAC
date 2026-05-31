@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QSAC - Thanh toán QR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/payment.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- ===== TOPBAR ===== -->
+    <header class="topbar">
+      <div class="logo">QSAC</div>
+      <nav class="nav">
+        <a href="../index.html">Đào tạo TMĐT</a>
+        <a href="courses.html">Khóa học</a>
+        <a href="schedule.html">Lịch khai giảng</a>
+        <a href="learning-path.html">Lộ trình học</a>
+        <a href="teachers.html">Giảng viên</a>
+        <a href="certificates.html">Chứng chỉ</a>
+        <a href="#">Hỗ trợ</a>
+      </nav>
+      <div class="user">
+        <span class="bell">
+          <i class="fa-regular fa-bell"></i>
+          <em class="badge">3</em>
+        </span>
+        <span class="avatar">N</span>
+        <span>Nguyễn V.A <i class="fa-solid fa-chevron-down"></i></span>
+      </div>
+    </header>
+
+    <!-- ===== PAYMENT WRAP ===== -->
+    <div class="payment-wrap">
+      <div class="payment-page">
+
+        <!-- Decorative sparkles -->
+        <i class="fa-solid fa-sparkles pay-star ps1" aria-hidden="true"></i>
+        <i class="fa-solid fa-sparkles pay-star ps2" aria-hidden="true"></i>
+        <i class="fa-solid fa-circle pay-star ps3" aria-hidden="true"></i>
+
+        <!-- Top: icon + title + timer -->
+        <section class="pay-top">
+          <div class="check-circle"><i class="fa-solid fa-hourglass-half"></i></div>
+          <h1 class="pay-title">Vui lòng thanh toán để hoàn tất đăng ký</h1>
+          <div class="pay-sub">Quét mã QR bên dưới để thanh toán đơn hàng</div>
+          <div class="pay-timer">
+            <i class="fa-regular fa-clock"></i>
+            Đơn hàng sẽ hết hạn sau <b id="countdown">15:00</b>
+          </div>
+        </section>
+
+        <!-- Main grid -->
+        <section class="pay-grid">
+
+          <!-- LEFT: QR card -->
+          <div>
+            <article class="pay-card qr-card">
+              <h2 class="qr-heading">Quét mã QR để thanh toán</h2>
+              <div class="vietqr-brand">
+                <span class="vq-red">◆</span><span class="vq-blue">VIETQR</span>
+              </div>
+              <div class="qrbox" aria-label="Mã QR thanh toán">
+                <div class="finder f1"></div>
+                <div class="finder f2"></div>
+                <div class="finder f3"></div>
+                <div class="qrgrid" id="qr-grid"></div>
+              </div>
+              <div class="qr-note">Sử dụng ứng dụng ngân hàng hoặc ví điện tử<br>để quét mã và thanh toán</div>
+              <div class="qr-divide"></div>
+              <div class="amt-label">Số tiền cần thanh toán</div>
+              <div class="amt js-price"></div>
+              <div class="transfer-label">
+                <i class="fa-regular fa-clipboard"></i> Nội dung chuyển khoản
+              </div>
+              <div class="transfer-code">
+                <span class="js-code" id="transfer-code-text"></span>
+                <button class="copy-btn" id="copy-btn" aria-label="Sao chép nội dung CK">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </article>
+            <div class="back-row">
+              Bạn chưa thanh toán?<br>
+              <a class="back-link" href="javascript:history.back()">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại trang đăng ký
+              </a>
+            </div>
+          </div>
+
+          <!-- RIGHT: notes + support -->
+          <aside class="pay-side">
+
+            <article class="pay-card note-card">
+              <div class="note-head">
+                <i class="fa-solid fa-circle-info"></i> Lưu ý quan trọng
+              </div>
+              <div class="note-row">
+                <span class="note-ico"><i class="fa-regular fa-clock"></i></span>
+                <span>Vui lòng không tắt trang cho đến khi thanh toán thành công.</span>
+              </div>
+              <div class="note-row">
+                <span class="note-ico"><i class="fa-regular fa-credit-card"></i></span>
+                <span>Đơn hàng sẽ được xác nhận ngay sau khi thanh toán.</span>
+              </div>
+              <div class="note-row">
+                <span class="note-ico"><i class="fa-regular fa-circle-check"></i></span>
+                <span>Nếu bạn đã thanh toán nhưng chưa được xác nhận, vui lòng liên hệ hỗ trợ.</span>
+              </div>
+            </article>
+
+            <article class="pay-card support-card">
+              <h3>Cần hỗ trợ?</h3>
+              <p>Đội ngũ QSAC luôn sẵn sàng hỗ trợ bạn</p>
+              <div class="contact-btns">
+                <span><i class="fa-solid fa-phone"></i> 0901 234 567</span>
+                <span><i class="fa-solid fa-envelope"></i> support@qsac.vn</span>
+              </div>
+              <div class="hours">
+                Thứ 2 – Thứ 7: 8:30 – 21:00 &nbsp;|&nbsp; Chủ nhật: 8:30 – 17:30
+              </div>
+            </article>
+
+          </aside>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="../js/payment.js" defer></script>
+</body>
+</html>

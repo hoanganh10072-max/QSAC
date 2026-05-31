@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QSAC - Chi tiết khóa học</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/course-detail.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- ===== TOPBAR ===== -->
+    <header class="topbar">
+      <div class="logo">QSAC</div>
+      <nav class="nav">
+        <a href="../index.html">Đào tạo TMĐT</a>
+        <a class="active" href="courses.html">Khóa học</a>
+        <a href="schedule.html">Lịch khai giảng</a>
+        <a href="learning-path.html">Lộ trình học</a>
+        <a href="teachers.html">Giảng viên</a>
+        <a href="certificates.html">Chứng chỉ</a>
+        <a href="support.html">Hỗ trợ</a>
+      </nav>
+      <div class="user">
+        <span class="bell"><i class="fa-regular fa-bell"></i></span>
+        <span class="avatar">N</span>
+        <span>Nguyễn V.A <i class="fa-solid fa-chevron-down"></i></span>
+      </div>
+    </header>
+
+    <!-- ===== COURSE HEADER BANNER ===== -->
+    <!-- Banner xanh đậm nổi bật: breadcrumb + badge + tiêu đề + mô tả + giảng viên + rating -->
+    <div class="course-header">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="../index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
+        <span>›</span>
+        <a href="../index.html">Khóa học</a>
+        <span>›</span>
+        <span id="crumb-title">Nhập môn Thương mại điện tử cho người mới</span>
+      </nav>
+
+      <span class="header-badge" id="detail-level">CƠ BẢN</span>
+      <h1 class="course-headline" id="detail-title">Nhập môn Thương mại điện tử cho người mới</h1>
+      <p class="course-summary" id="detail-desc">Khóa học giúp bạn nắm vững kiến thức nền tảng và từng bước xây dựng lộ trình kinh doanh TMĐT hiệu quả.</p>
+
+      <div class="teacher-info">
+        <div class="teacher-ava" id="detail-teacher-ava">H</div>
+        <span id="detail-teacher">GV. Trần Thị Hà</span>
+        <span class="teacher-pill">Giảng viên chính thức</span>
+      </div>
+
+      <div class="course-stats">
+        <span id="detail-meta"><i class="fa-solid fa-clock"></i> 6 tuần · <i class="fa-solid fa-book-open"></i> 24 bài học · <i class="fa-solid fa-users"></i> 1.240 học viên</span>
+        <span class="stats-dot">·</span>
+        <span class="course-rating">
+          <span class="stars">★★★★★</span>
+          <b id="detail-score">4.8</b>
+          <span id="detail-reviews">(1.240 đánh giá) · <i class="fa-solid fa-shield-halved"></i> Chứng chỉ Bộ Công Thương</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- ===== DETAIL BODY ===== -->
+    <div class="detail-body">
+
+      <!-- Cột nội dung chính -->
+      <div class="detail-main">
+
+        <!-- Video preview full-width -->
+        <div class="video-preview">
+          <div class="vp-wheel"></div>
+          <div class="vp-cart"></div>
+          <div class="vp-box"></div>
+          <div class="vp-box small"></div>
+          <button class="play-btn" aria-label="Xem giới thiệu khóa học"></button>
+        </div>
+
+        <!-- Tabs điều hướng -->
+        <div class="tabs-bar" role="tablist">
+          <button class="dtab active" role="tab" data-tab="overview">
+            <i class="fa-solid fa-border-all"></i> Tổng quan
+          </button>
+          <button class="dtab" role="tab" data-tab="content">
+            <i class="fa-solid fa-list"></i> Nội dung
+          </button>
+          <button class="dtab" role="tab" data-tab="teacher">
+            <i class="fa-solid fa-chalkboard-user"></i> Giảng viên
+          </button>
+          <button class="dtab" role="tab" data-tab="reviews">
+            <i class="fa-solid fa-star"></i> Đánh giá
+          </button>
+          <button class="dtab" role="tab" data-tab="faq">
+            <i class="fa-solid fa-circle-question"></i> Câu hỏi thường gặp
+          </button>
+        </div>
+
+        <!-- Panel: Tổng quan -->
+        <section class="tab-panel dtab-card" id="panel-overview">
+          <h3>Bạn sẽ học được gì?</h3>
+          <div class="learn-grid">
+            <div class="learn-item"><div class="learn-ico"><i class="fa-solid fa-cart-shopping"></i></div>Nắm vững kiến thức nền tảng về TMĐT</div>
+            <div class="learn-item"><div class="learn-ico"><i class="fa-solid fa-store"></i></div>Hiểu cách vận hành các sàn TMĐT lớn</div>
+            <div class="learn-item"><div class="learn-ico"><i class="fa-solid fa-chart-line"></i></div>Xây dựng và tối ưu gian hàng hiệu quả</div>
+            <div class="learn-item"><div class="learn-ico"><i class="fa-solid fa-bullhorn"></i></div>Áp dụng chiến lược marketing cơ bản</div>
+          </div>
+          <div class="intro-block">
+            <h3>Giới thiệu khóa học</h3>
+            <p>Khóa học "Nhập môn Thương mại điện tử cho người mới" được thiết kế dành cho những ai mới bắt đầu tìm hiểu hoặc muốn kinh doanh online bài bản. Bạn sẽ được hướng dẫn từ A-Z: tư duy, chọn sản phẩm, tạo gian hàng, đăng sản phẩm, đến các bước chăm sóc khách hàng và tối ưu doanh thu.</p>
+          </div>
+        </section>
+
+        <!-- Panel: Nội dung khóa học -->
+        <section class="tab-panel dtab-card hidden" id="panel-content">
+          <h3>Nội dung khóa học</h3>
+          <p class="placeholder-text">Nội dung chi tiết sẽ được cập nhật sớm.</p>
+        </section>
+
+        <!-- Panel: Giảng viên -->
+        <section class="tab-panel dtab-card hidden" id="panel-teacher">
+          <h3>Giảng viên</h3>
+          <p class="placeholder-text" id="teacher-bio">GV. Trần Thị Hà — Chuyên gia TMĐT với 8 năm kinh nghiệm thực chiến.</p>
+        </section>
+
+        <!-- Panel: Đánh giá -->
+        <section class="tab-panel dtab-card hidden" id="panel-reviews">
+          <h3>Đánh giá học viên</h3>
+          <p class="placeholder-text">Chưa có đánh giá nào được hiển thị.</p>
+        </section>
+
+        <!-- Panel: Câu hỏi thường gặp -->
+        <section class="tab-panel dtab-card hidden" id="panel-faq">
+          <h3>Câu hỏi thường gặp</h3>
+          <p class="placeholder-text">Chưa có câu hỏi nào được thêm vào.</p>
+        </section>
+
+      </div>
+
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="detail-sidebar">
+
+        <!-- Thẻ giá -->
+        <div class="dtab-card price-card">
+          <div class="price-main" id="detail-price">1.500.000đ</div>
+          <div class="price-old-row">
+            <span class="price-old" id="detail-old-price">2.000.000đ</span>
+            <span class="discount-tag" id="detail-discount">-25%</span>
+          </div>
+          <ul class="benefit-list">
+            <li><i class="fa-solid fa-infinity"></i> Truy cập trọn đời</li>
+            <li><i class="fa-solid fa-clock"></i> Học mọi lúc, mọi nơi</li>
+            <li><i class="fa-solid fa-headset"></i> Hỗ trợ giảng viên 24/7</li>
+            <li><i class="fa-solid fa-certificate"></i> Chứng chỉ Bộ Công Thương</li>
+          </ul>
+          <button class="btn-enroll"><i class="fa-solid fa-graduation-cap"></i> Đăng ký học ngay</button>
+          <button class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+          <p class="guarantee-note"><i class="fa-solid fa-shield-halved"></i> 7 ngày hoàn tiền nếu không hài lòng</p>
+        </div>
+
+        <!-- Thông tin khóa học -->
+        <div class="dtab-card info-card">
+          <h3>Thông tin khóa học</h3>
+          <div class="info-row">
+            <span><i class="fa-solid fa-signal"></i> Cấp độ</span>
+            <span class="level-badge" id="detail-level-badge">Cơ bản</span>
+          </div>
+          <div class="info-row">
+            <span><i class="fa-solid fa-clock"></i> Thời lượng</span>
+            <b id="detail-duration">6 tuần</b>
+          </div>
+          <div class="info-row">
+            <span><i class="fa-solid fa-book-open"></i> Số bài học</span>
+            <b id="detail-lessons">24 bài</b>
+          </div>
+          <div class="info-row">
+            <span><i class="fa-solid fa-video"></i> Hình thức</span>
+            <b>Video bài giảng</b>
+          </div>
+          <div class="info-row">
+            <span><i class="fa-solid fa-infinity"></i> Truy cập</span>
+            <b>Trọn đời</b>
+          </div>
+          <div class="info-row">
+            <span><i class="fa-solid fa-rotate"></i> Cập nhật</span>
+            <b>05/2024</b>
+          </div>
+        </div>
+
+        <!-- Chia sẻ -->
+        <div class="dtab-card share-card">
+          <span>Chia sẻ khóa học</span>
+          <div class="share-icons">
+            <button class="share-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></button>
+            <button class="share-btn" aria-label="Zalo"><i class="fa-solid fa-comment-dots"></i></button>
+            <button class="share-btn" aria-label="Sao chép link"><i class="fa-regular fa-copy"></i></button>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+  </main>
+
+  <script src="../js/course-detail.js" defer></script>
+</body>
+</html>

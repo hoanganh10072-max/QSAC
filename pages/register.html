@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QSAC - Đăng ký học ngay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/register.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- ===== TOPBAR ===== -->
+    <header class="topbar">
+      <div class="logo">QSAC</div>
+      <nav class="nav">
+        <a href="../index.html">Đào tạo TMĐT</a>
+        <a href="courses.html">Khóa học</a>
+        <a href="schedule.html">Lịch khai giảng</a>
+        <a href="learning-path.html">Lộ trình học</a>
+        <a href="teachers.html">Giảng viên</a>
+        <a href="certificates.html">Chứng chỉ</a>
+        <a href="support.html">Hỗ trợ</a>
+      </nav>
+      <div class="user">
+        <span class="bell">
+          <i class="fa-regular fa-bell"></i>
+          <em class="badge">3</em>
+        </span>
+        <span class="avatar">N</span>
+        <span>Nguyễn V.A <i class="fa-solid fa-chevron-down"></i></span>
+      </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <div class="reg-hero">
+      <div>
+        <h1>Đăng ký học ngay</h1>
+        <p>Hoàn tất thông tin để giữ chỗ khóa học và bắt đầu hành trình nâng cao kỹ năng cùng QSAC.</p>
+      </div>
+      <div class="reg-hero-art" aria-hidden="true">🎓 &nbsp; 📋 &nbsp; 🛍</div>
+    </div>
+
+    <!-- ===== MAIN GRID ===== -->
+    <div class="reg-layout">
+
+      <!-- LEFT: form card -->
+      <div class="reg-card">
+
+        <!-- 1. Course info -->
+        <div class="reg-section">
+          <h2 class="reg-title">1. Thông tin khóa học</h2>
+          <div class="course-preview">
+            <div class="reg-thumb"></div>
+            <div class="cp-info">
+              <h3 class="js-title">Đang tải...</h3>
+              <div class="cp-meta">
+                <span><i class="fa-solid fa-user-tie"></i> <span class="js-teacher"></span></span>
+                <span><i class="fa-solid fa-book-open"></i> <span class="js-lessons"></span></span>
+                <span><i class="fa-regular fa-clock"></i> <span class="js-weeks"></span></span>
+                <span class="cp-level js-level"></span>
+              </div>
+              <div class="cp-rating">
+                <i class="fa-solid fa-star"></i>
+                <b class="js-score"></b>&nbsp;
+                <span class="js-students"></span>
+              </div>
+            </div>
+            <div class="cp-price">
+              <div class="discount-row js-has-discount"><del class="js-old-price"></del></div>
+              <div class="cp-new js-price"></div>
+              <span class="cp-sale js-discount-pct js-has-discount"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Student info -->
+        <div class="reg-section">
+          <h2 class="reg-title">2. Thông tin học viên</h2>
+          <div class="form-grid">
+            <div class="field">
+              <label>Họ và tên <span class="req">*</span></label>
+              <input type="text" placeholder="Nhập họ và tên">
+            </div>
+            <div class="field">
+              <label>Email <span class="req">*</span></label>
+              <input type="email" placeholder="Nhập email">
+            </div>
+            <div class="field">
+              <label>Số điện thoại <span class="req">*</span></label>
+              <input type="tel" placeholder="Nhập số điện thoại">
+            </div>
+            <div class="field">
+              <label>Ngày sinh</label>
+              <input type="text" placeholder="dd/mm/yyyy">
+            </div>
+            <div class="field">
+              <label>Giới tính</label>
+              <select>
+                <option>Chọn giới tính</option>
+                <option>Nam</option><option>Nữ</option><option>Khác</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Nghề nghiệp</label>
+              <select>
+                <option>Chọn nghề nghiệp</option>
+                <option>Học sinh / Sinh viên</option>
+                <option>Nhân viên văn phòng</option>
+                <option>Chủ kinh doanh</option>
+                <option>Freelancer</option>
+                <option>Khác</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Kinh nghiệm hiện tại</label>
+              <select>
+                <option>Chọn kinh nghiệm</option>
+                <option>Chưa có kinh nghiệm</option>
+                <option>Dưới 1 năm</option>
+                <option>1 – 3 năm</option>
+                <option>Trên 3 năm</option>
+              </select>
+            </div>
+            <div class="field field-wide">
+              <label>Bạn biết đến QSAC từ đâu?</label>
+              <select>
+                <option>Chọn nguồn</option>
+                <option>Mạng xã hội</option>
+                <option>Bạn bè giới thiệu</option>
+                <option>Google</option>
+                <option>Quảng cáo online</option>
+                <option>Khác</option>
+              </select>
+            </div>
+          </div>
+          <label class="form-check">
+            <input type="checkbox" checked>
+            Tôi đồng ý nhận thông tin, chương trình khuyến mãi từ QSAC
+          </label>
+        </div>
+
+        <!-- 3. Payment -->
+        <div class="reg-section reg-section-last">
+          <h2 class="reg-title">3. Phương thức thanh toán</h2>
+          <div class="pay-grid">
+            <div class="pay-opt active" data-method="bank">
+              <i class="fa-solid fa-building-columns"></i>
+              <div>Chuyển khoản<br><span class="muted">Ngân hàng</span></div>
+            </div>
+            <div class="pay-opt" data-method="atm">
+              <i class="fa-solid fa-credit-card"></i>
+              <div>Thẻ ATM / Internet Banking<br><span class="muted">Thanh toán qua cổng</span></div>
+            </div>
+            <div class="pay-opt" data-method="visa">
+              <i class="fa-brands fa-cc-visa"></i>
+              <div>Thẻ Visa / MasterCard<br><span class="muted">Thanh toán quốc tế</span></div>
+            </div>
+            <div class="pay-opt" data-method="wallet">
+              <i class="fa-solid fa-wallet"></i>
+              <div>Ví điện tử<br><span class="muted">Momo, ZaloPay...</span></div>
+            </div>
+          </div>
+
+          <div class="bank-info">
+            <div class="bank-icon"><i class="fa-solid fa-landmark"></i></div>
+            <div class="bank-note">
+              <b>Thông tin chuyển khoản</b>
+              <span>Vui lòng chuyển khoản theo thông tin bên dưới và nội dung chuyển khoản để được xác nhận tự động.</span>
+            </div>
+            <div class="bank-col">
+              <b>Ngân hàng</b><span>ACB – Ngân hàng Á Châu</span>
+              <b>Số tài khoản</b><span>1234 5678 9999</span>
+            </div>
+            <div class="bank-col">
+              <b>Chủ tài khoản</b><span>CTY CP ĐÀO TẠO QSAC</span>
+              <b>Nội dung CK</b><span class="bank-ref">QSAC_HOTEN_SDT</span>
+            </div>
+          </div>
+
+          <div class="reg-bottom">
+            <button class="btn-back"><i class="fa-solid fa-arrow-left"></i> Quay lại</button>
+            <button class="btn-continue">Tiếp tục thanh toán <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+      </div><!-- /reg-card -->
+
+      <!-- RIGHT: summary + help -->
+      <aside class="reg-aside">
+
+        <div class="reg-card sum-card">
+          <h2>Tóm tắt đơn hàng</h2>
+          <div class="sum-head">
+            <div class="reg-thumb reg-thumb-sm"></div>
+            <div>
+              <div class="sum-title js-title"></div>
+              <div class="sum-sub">
+                <i class="fa-solid fa-user-tie"></i>
+                <span class="js-teacher"></span>
+                <span class="cp-level js-level"></span>
+              </div>
+            </div>
+          </div>
+          <div class="sum-line js-has-discount">
+            <span>Học phí gốc</span><b class="line-old js-original"></b>
+          </div>
+          <div class="sum-line js-has-discount">
+            <span>Ưu đãi</span><b class="line-green js-discount-amt"></b>
+          </div>
+          <div class="sum-line sum-total">
+            <span><b>Tổng thanh toán</b></span><b class="js-price-sum"></b>
+          </div>
+          <div class="sum-benefits">
+            <div class="sum-benefit">
+              <i class="fa-regular fa-clock"></i>
+              <div><b>Học mọi lúc, mọi nơi</b><br><span class="muted">Trên web, mobile hoặc app</span></div>
+            </div>
+            <div class="sum-benefit">
+              <i class="fa-solid fa-chalkboard-user"></i>
+              <div><b>Giảng viên giàu kinh nghiệm</b><br><span class="muted">Hỗ trợ tận tình trong suốt khóa học</span></div>
+            </div>
+            <div class="sum-benefit">
+              <i class="fa-solid fa-certificate"></i>
+              <div><b>Chứng chỉ uy tín</b><br><span class="muted">Cấp chứng chỉ hoàn thành khóa học</span></div>
+            </div>
+            <div class="sum-benefit">
+              <i class="fa-solid fa-rotate-left"></i>
+              <div><b>Học lại miễn phí</b><br><span class="muted">Trong 6 tháng nếu chưa nắm vững</span></div>
+            </div>
+          </div>
+          <div class="secure-note">
+            <i class="fa-solid fa-shield-halved"></i>
+            <b>Thông tin của bạn được bảo mật tuyệt đối</b><br>
+            <span class="muted">QSAC cam kết không chia sẻ thông tin cá nhân của bạn với bên thứ ba.</span>
+          </div>
+        </div>
+
+        <div class="reg-card help-card">
+          <h3>Cần hỗ trợ?</h3>
+          <p class="muted">Đội ngũ QSAC luôn sẵn sàng hỗ trợ bạn</p>
+          <div class="contact-row">
+            <span><i class="fa-solid fa-phone"></i> 0901 234 567</span>
+            <span><i class="fa-solid fa-envelope"></i> support@qsac.vn</span>
+          </div>
+          <p class="muted">Thứ 2 – Thứ 7: 8:30 – 21:00 &nbsp;|&nbsp; Chủ nhật: 8:30 – 17:30</p>
+        </div>
+
+      </aside>
+    </div>
+
+  </main>
+
+  <script src="../js/register.js" defer></script>
+</body>
+</html>

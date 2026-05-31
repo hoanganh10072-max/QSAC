@@ -1,0 +1,26 @@
+/* =============================================
+   global.css — Reset, base, app wrapper
+   Dùng cho mọi trang trong dự án
+   ============================================= */
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base */
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: #f7f9fc;
+  color: #152034;
+  padding: 0;
+}
+
+/* App container — full width, không viền */
+.app {
+  width: 100%;
+  background: #f7f9fc;
+  min-height: 100vh;
+}

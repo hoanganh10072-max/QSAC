@@ -1,0 +1,403 @@
+/* =============================================
+   teachers.css — Trang giảng viên
+   Thứ tự: wrap → hero-grid → hero → numbers → filters → main → card → sidebar → responsive
+   ============================================= */
+
+
+/* ── WRAP ── */
+.tv-wrap { padding: 20px 26px 32px; }
+
+
+/* ── HERO GRID ── */
+.tv-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 296px;
+  gap: 17px;
+  margin-bottom: 18px;
+}
+
+
+/* ── HERO BANNER ── */
+.tv-hero {
+  min-height: 220px;
+  height: auto;
+  border-radius: 12px;
+  background: radial-gradient(circle at 70% 50%, #075bff 0, #003ab8 42%, #031d73 100%);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  padding: 32px 36px;
+  box-shadow: 0 12px 28px rgba(5,40,150,.18);
+}
+
+.tv-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.28);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  letter-spacing: .5px;
+}
+
+.tv-hero h1 {
+  font-size: 27px;
+  line-height: 1.2;
+  letter-spacing: -.8px;
+  margin: 0 0 14px;
+  max-width: 380px;
+}
+
+.tv-hero p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(220,234,255,.85);
+  max-width: 380px;
+  margin: 0 0 24px;
+}
+
+.tv-hero-stats {
+  display: flex;
+  gap: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.15);
+  margin-top: 0;
+}
+
+.tv-stat { display: flex; align-items: center; gap: 10px; }
+
+.tv-stat-ico {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.15);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.tv-stat-ico i { color: #fff; }
+
+.tv-stat b { display: block; font-size: 17px; font-weight: 800; }
+.tv-stat small { font-size: 11px; color: rgba(210,225,255,.8); }
+
+/* Orbit trang trí */
+.tv-orbit {
+  position: absolute; right: 45px; bottom: 28px;
+  width: 250px; height: 70px;
+  border: 4px solid rgba(72,180,255,.8); border-left-color: transparent;
+  border-radius: 50%; transform: rotate(7deg);
+  box-shadow: 0 0 18px rgba(30,185,255,.65);
+}
+
+/* Card trang trí */
+.tv-deco-card {
+  position: absolute; right: 20px; top: 60px;
+  width: 68px; height: 40px; border-radius: 8px;
+  background: rgba(72,132,255,.35); backdrop-filter: blur(4px);
+}
+
+.tv-deco-card.two { top: 110px; }
+
+/* CSS illustration: 2 nhân vật */
+.tv-people { position: absolute; right: 55px; bottom: 0; width: 230px; height: 185px; }
+
+.tv-person {
+  position: absolute; bottom: 0; border-radius: 16px 16px 3px 3px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+}
+
+.tv-person::before {
+  content: ""; position: absolute;
+  width: 50px; height: 50px; border-radius: 50%;
+  top: -38px; left: 50%; transform: translateX(-50%);
+  box-shadow: inset 0 -5px 0 rgba(0,0,0,.06);
+}
+
+.tv-person.woman { left: 22px; width: 80px; height: 118px; background: #fff; }
+.tv-person.woman::before { background: #f4c4a7; }
+.tv-person.woman::after {
+  content: ""; position: absolute;
+  width: 68px; height: 80px; border-radius: 50% 50% 40% 40%;
+  background: #1d1b22; top: -66px; left: 5px; z-index: -1;
+}
+
+.tv-person.man { right: 20px; width: 86px; height: 138px; background: #172542; }
+.tv-person.man::before { background: #f4bd9c; }
+.tv-person.man::after {
+  content: ""; position: absolute;
+  inset: 22px 10px auto; height: 40px; background: #fff; border-radius: 5px;
+}
+
+
+/* ── NUMBERS CARD ── */
+.tv-numbers {
+  background: #fff;
+  border: 1px solid #e2e9f7;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 7px 20px rgba(15,55,128,.07);
+  padding: 0;
+}
+
+.tv-numbers h3 {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(120deg, #0b46d6 0%, #2979ff 100%);
+  padding: 14px 18px;
+  margin: 0;
+}
+
+.tv-numgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #e8eef8;
+}
+
+.tv-num {
+  background: #fff;
+  padding: 18px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  transition: background .15s;
+}
+
+.tv-num:hover { background: #f8faff; }
+
+.tv-num-ic {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+/* Màu riêng từng ô */
+.tv-num:nth-child(1) .tv-num-ic { background: #eef3ff; }
+.tv-num:nth-child(1) .tv-num-ic i { color: #0751ff; }
+.tv-num:nth-child(1) b { color: #0751ff; }
+
+.tv-num:nth-child(2) .tv-num-ic { background: #edfaf3; }
+.tv-num:nth-child(2) .tv-num-ic i { color: #10a855; }
+.tv-num:nth-child(2) b { color: #10a855; }
+
+.tv-num:nth-child(3) .tv-num-ic { background: #fff4eb; }
+.tv-num:nth-child(3) .tv-num-ic i { color: #f97316; }
+.tv-num:nth-child(3) b { color: #f97316; }
+
+.tv-num:nth-child(4) .tv-num-ic { background: #fffbeb; }
+.tv-num:nth-child(4) .tv-num-ic i { color: #d97706; }
+.tv-num:nth-child(4) b { color: #d97706; }
+
+.tv-num b { display: block; font-size: 21px; font-weight: 900; line-height: 1; }
+.tv-num span { font-size: 11px; color: #526080; }
+
+
+/* ── FILTER BAR ── */
+.tv-filter-bar {
+  display: grid; grid-template-columns: 1fr 130px 130px 170px;
+  gap: 12px; margin-bottom: 18px;
+}
+
+.tv-search, .tv-select {
+  height: 38px; border: 1px solid #dfe7f5; border-radius: 8px;
+  background: #fff; font-size: 12px;
+  display: flex; align-items: center; padding: 0 14px; gap: 8px;
+  color: #75809b;
+}
+
+.tv-select { justify-content: center; color: #1d2e67; font-weight: 600; cursor: pointer; }
+.tv-select:hover { border-color: #075ff2; }
+
+
+/* ── MAIN LAYOUT ── */
+.tv-main { display: grid; grid-template-columns: 1fr 296px; gap: 17px; }
+
+.tv-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
+
+
+/* ── TEACHER CARD ── */
+.tc-card {
+  background: #fff; border: 1px solid #dfe7f4; border-radius: 8px;
+  overflow: hidden; box-shadow: 0 8px 20px rgba(0,30,80,.04);
+}
+
+/* Cover màu gradient */
+.tc-cover {
+  height: 118px; position: relative; overflow: hidden;
+  background: linear-gradient(145deg, #0e3065, #081a37);
+}
+
+.tc-cover.orange { background: linear-gradient(135deg, #ff5d20, #e83012); }
+.tc-cover.purple { background: linear-gradient(135deg, #6531db, #0626a4); }
+.tc-cover.teal   { background: linear-gradient(135deg, #0a7472, #05172a); }
+.tc-cover.blue   { background: linear-gradient(135deg, #0973ff, #0240c4); }
+.tc-cover.rose   { background: linear-gradient(135deg, #d946ef, #6527db); }
+
+.tc-badge {
+  position: absolute; left: 10px; top: 10px;
+  border-radius: 10px; padding: 5px 9px;
+  font-size: 9px; color: #fff; background: #16b76b; font-weight: 700;
+}
+
+.tc-badge.red  { background: #ff5a4f; }
+.tc-badge.gray { background: #34b5a7; }
+
+.tc-fav {
+  position: absolute; right: 11px; top: 9px;
+  color: #fff; font-size: 17px; background: none; border: none; cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.tc-fav:hover { transform: scale(1.2); }
+
+/* Ảnh full cover */
+.tc-head {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+
+/* ── CARD BODY ── */
+.tc-body { padding: 14px 12px 12px; }
+
+.tc-body h4 { font-size: 13px; line-height: 1.2; margin-bottom: 4px; color: #1c2b61; }
+
+.tc-verified { color: #1262ff; }
+
+.tc-body > p {
+  font-size: 11px; color: #53617d; line-height: 1.35;
+  height: 32px; overflow: hidden;
+}
+
+.tc-meta {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  font-size: 10px; color: #58647e; margin: 10px 0;
+}
+
+.tc-meta span { display: flex; align-items: center; gap: 4px; }
+
+.tc-rating { font-size: 11px; color: #53617d; margin-bottom: 10px; }
+
+.tc-star { color: #ffb300; }
+
+.tc-btn {
+  display: block; width: 100%; height: 30px;
+  border-radius: 6px; border: 1px solid #0751ff;
+  background: #fff; color: #0751ff;
+  font-size: 11px; font-weight: 700; cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.tc-btn:hover               { background: #0751ff; color: #fff; }
+.tc-btn.orange              { border-color: #ff5b2e; color: #ff5b2e; }
+.tc-btn.orange:hover        { background: #ff5b2e; color: #fff; }
+.tc-btn.purple              { border-color: #7c4dff; color: #6f3fff; }
+.tc-btn.purple:hover        { background: #7c4dff; color: #fff; }
+.tc-btn.teal                { border-color: #1bb7b2; color: #11928d; }
+.tc-btn.teal:hover          { background: #1bb7b2; color: #fff; }
+.tc-btn.blue                { border-color: #0973ff; color: #0973ff; }
+.tc-btn.blue:hover          { background: #0973ff; color: #fff; }
+.tc-btn.rose                { border-color: #d946ef; color: #c026d3; }
+.tc-btn.rose:hover          { background: #d946ef; color: #fff; }
+
+
+/* ── SIDEBAR ── */
+.tv-side { display: flex; flex-direction: column; gap: 12px; }
+
+/* CTA ứng tuyển */
+.tv-apply {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #eef5ff, #dce8ff);
+  border: 1px solid #d6e4ff; border-radius: 12px; padding: 18px;
+  box-shadow: 0 7px 20px rgba(15,55,128,.04);
+}
+
+.tv-apply h3   { font-size: 14px; margin-bottom: 8px; color: #18306c; }
+.tv-apply p    { font-size: 12px; color: #53617d; line-height: 1.4; width: 175px; margin-bottom: 14px; }
+.tv-apply button {
+  background: #0751ff; color: #fff; border: 0;
+  border-radius: 6px; padding: 9px 20px; font-weight: 700; font-size: 11px; cursor: pointer;
+}
+.tv-apply button:hover { background: #0640d9; }
+
+.tv-apply::after {
+  content: '🎓'; position: absolute; right: 18px; bottom: 14px;
+  font-size: 52px; filter: drop-shadow(0 8px 10px rgba(0,60,200,.15));
+}
+
+/* Danh sách yêu thích */
+.tv-fav {
+  background: #fff; border: 1px solid #e2e9f7; border-radius: 12px;
+  padding: 18px; box-shadow: 0 7px 20px rgba(15,55,128,.04);
+}
+
+.tv-fav-head {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+}
+
+.tv-fav-head h3 { font-size: 14px; color: #18306c; }
+.tv-fav-head a  { font-size: 10px; color: #0751ff; font-weight: 700; text-decoration: none; }
+.tv-fav-head a:hover { text-decoration: underline; }
+
+.tv-fav-item {
+  display: grid; grid-template-columns: 40px 1fr auto;
+  gap: 10px; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid #edf1f8;
+}
+
+.tv-fav-item:last-of-type { border-bottom: 0; }
+
+.tv-fav-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  flex-shrink: 0;
+  border: 2px solid #e8eef8;
+}
+
+.tv-fav-item b    { font-size: 12px; color: #1d2d64; }
+.tv-fav-item > div > p { font-size: 10px; color: #69758f; margin: 2px 0; }
+.tv-fav-item span { font-size: 10px; color: #59657d; }
+.tv-fav-item em   { font-style: normal; font-size: 10px; color: #2b3766; }
+
+.tv-all-btn {
+  width: 100%; height: 34px; border: 1px solid #bdd1ff; border-radius: 7px;
+  background: none; color: #0751ff; font-size: 12px; font-weight: 700;
+  cursor: pointer; margin-top: 10px;
+}
+
+.tv-all-btn:hover { background: #eef4ff; }
+
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .tv-hero-grid { grid-template-columns: 1fr; }
+  .tv-hero { height: auto; padding: 22px; }
+  .tv-numbers { display: none; }
+
+  .tv-filter-bar { grid-template-columns: 1fr 1fr; }
+
+  .tv-main { grid-template-columns: 1fr; }
+  .tv-cards { grid-template-columns: repeat(2, 1fr); }
+  .tv-side { display: none; }
+}

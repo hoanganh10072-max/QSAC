@@ -1,0 +1,276 @@
+/* =============================================
+   course-detail.css — Chi tiết khóa học
+   Thứ tự: header banner → body layout → video → tabs → panels → sidebar → responsive
+   ============================================= */
+
+
+/* ── COURSE HEADER BANNER ── */
+.course-header {
+  background: linear-gradient(150deg, #1354d6 0%, #062872 100%);
+  padding: 22px 26px 28px;
+  color: #fff;
+}
+
+.course-header .crumb {
+  display: flex; gap: 8px; align-items: center;
+  font-size: 11px; color: rgba(255,255,255,.55); margin-bottom: 16px;
+}
+
+.course-header .crumb a { color: rgba(255,255,255,.55); text-decoration: none; }
+.course-header .crumb a:hover { color: #fff; }
+
+.header-badge {
+  display: inline-block;
+  background: #fff176; color: #0b2458;
+  font-size: 10px; font-weight: 800;
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
+}
+
+.course-headline {
+  font-size: 24px; font-weight: 800; line-height: 1.22;
+  margin: 0 0 12px; max-width: 680px; letter-spacing: -.5px;
+}
+
+.course-summary {
+  font-size: 13px; line-height: 1.65;
+  color: rgba(255,255,255,.78); max-width: 580px; margin: 0 0 18px;
+}
+
+.teacher-info {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 600; margin-bottom: 14px;
+}
+
+.teacher-ava {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(255,255,255,.2); display: grid; place-items: center;
+  font-size: 12px; font-weight: 800;
+}
+
+.teacher-pill {
+  font-size: 9px; background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25); border-radius: 20px;
+  padding: 3px 9px; color: rgba(255,255,255,.85);
+}
+
+.course-stats {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  font-size: 12px; color: rgba(255,255,255,.7);
+}
+
+.stats-dot { opacity: .45; }
+
+.course-rating { display: flex; align-items: center; gap: 6px; }
+.course-rating .stars { color: #f7b500; font-size: 13px; }
+.course-rating b { color: #fff; }
+
+
+/* ── BODY LAYOUT ── */
+.detail-body {
+  display: grid;
+  grid-template-columns: 1fr 296px;
+  gap: 24px;
+  padding: 24px 26px 36px;
+  align-items: start;
+}
+
+
+/* ── VIDEO PREVIEW ── */
+.video-preview {
+  width: 100%; height: 240px; border-radius: 12px;
+  background: radial-gradient(circle at 30% 50%, #246cf5 0, #083fb7 38%, #05206f 100%);
+  position: relative; overflow: hidden;
+  box-shadow: 0 12px 28px rgba(10,54,148,.18);
+}
+
+.vp-wheel {
+  position: absolute; background: #78aaff; border-radius: 50%;
+  bottom: -14px; left: 120px; width: 260px; height: 55px; opacity: .4;
+}
+
+.vp-cart {
+  position: absolute; left: 60px; top: 82px;
+  width: 140px; height: 90px;
+  border: 10px solid rgba(210,230,255,.75); border-top: none;
+  border-radius: 5px; transform: skew(-5deg);
+}
+
+.vp-cart::before {
+  content: ""; position: absolute; left: -15px; top: -28px;
+  width: 75px; height: 36px;
+  border-top: 9px solid rgba(210,230,255,.7); transform: rotate(12deg);
+}
+
+.vp-box {
+  position: absolute; right: 130px; top: 80px;
+  width: 90px; height: 68px;
+  background: linear-gradient(145deg, #67a4ff, #1d62d7); border-radius: 6px;
+}
+
+.vp-box.small { right: 60px; top: 132px; width: 55px; height: 50px; }
+
+/* Nút play căn giữa */
+.play-btn {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+}
+
+.play-btn::after {
+  content: ""; margin-left: 5px;
+  border-left: 18px solid #1d4bbf;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+}
+
+
+/* ── TABS ── */
+.tabs-bar {
+  margin-top: 20px; height: 42px;
+  display: flex; gap: 28px;
+  border-bottom: 1px solid #e5eaf4;
+}
+
+.dtab {
+  font-size: 12px; color: #5a6070; font-weight: 600;
+  background: none; border: none; border-bottom: 2px solid transparent;
+  cursor: pointer; padding: 0; height: 100%; white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.dtab:hover { color: #075ff2; }
+.dtab.active { color: #075ff2; border-bottom-color: #075ff2; }
+
+
+/* ── CARDS CHUNG ── */
+.dtab-card {
+  background: #fff; border: 1px solid #e8edf5;
+  border-radius: 10px; box-shadow: 0 4px 16px rgba(16,24,40,.05);
+}
+
+.tab-panel { margin-top: 16px; padding: 20px; }
+
+.tab-panel h3 {
+  font-size: 13px; margin: 0 0 16px;
+  padding-left: 10px; border-left: 3px solid #145fff; color: #101828;
+}
+
+.hidden { display: none; }
+.placeholder-text { font-size: 12px; color: #94a3b8; }
+
+
+/* ── LEARN GRID ── */
+.learn-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+
+.learn-item {
+  min-height: 68px; border: 1px solid #e6ecf6; border-radius: 8px;
+  background: #fbfcff; display: flex; align-items: center;
+  gap: 12px; padding: 12px; font-size: 11px; font-weight: 600;
+  line-height: 1.4; color: #344054;
+}
+
+.learn-ico {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: #eef4ff; display: grid; place-items: center;
+  font-size: 18px; flex-shrink: 0;
+}
+
+.intro-block { border-top: 1px solid #edf1f7; margin-top: 20px; padding-top: 18px; }
+.intro-block h3 { margin-bottom: 10px; }
+.intro-block p { font-size: 12px; line-height: 1.7; color: #485568; margin: 0; }
+
+
+/* ── SIDEBAR (sticky) ── */
+.detail-sidebar {
+  position: sticky; top: 20px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* Thẻ giá */
+.price-card { padding: 20px; }
+
+.price-main { font-size: 26px; font-weight: 800; color: #075ff2; margin-bottom: 6px; }
+
+.price-old-row { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+
+.price-old { color: #98a2b3; text-decoration: line-through; font-size: 13px; font-weight: 700; }
+
+.discount-tag {
+  background: #eaf1ff; color: #0b5ff3;
+  border-radius: 12px; padding: 4px 10px; font-size: 10px; font-weight: 800;
+}
+
+.benefit-list {
+  list-style: none; padding: 0; margin: 0 0 18px;
+  display: grid; gap: 10px; font-size: 11px; color: #475467;
+}
+
+.benefit-list li { display: flex; align-items: center; gap: 8px; }
+.benefit-list i { color: #075ff2; width: 14px; text-align: center; }
+
+.btn-enroll, .btn-add-cart {
+  width: 100%; height: 38px; border-radius: 8px;
+  font-size: 12px; font-weight: 800; cursor: pointer;
+  border: 1.5px solid #0b5ff3; margin-bottom: 10px;
+}
+
+.btn-enroll { background: #074ff5; color: #fff; }
+.btn-enroll:hover { background: #0543d9; }
+.btn-add-cart { background: #fff; color: #075ff2; }
+.btn-add-cart:hover { background: #eef4ff; }
+
+.guarantee-note { text-align: center; color: #5f8a68; font-size: 10px; margin: 0; }
+
+/* Thẻ thông tin */
+.info-card { padding: 18px; }
+.info-card h3 { font-size: 13px; margin: 0 0 14px; color: #101828; }
+
+.info-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11px; padding: 9px 0; border-bottom: 1px solid #f0f4fa; color: #344054;
+}
+
+.info-row:last-child { border-bottom: none; }
+.info-row > span { display: flex; align-items: center; gap: 7px; color: #667085; }
+.info-row i { color: #075ff2; width: 14px; text-align: center; }
+
+.level-badge {
+  border: 1px solid #175cff; color: #175cff;
+  border-radius: 12px; padding: 3px 10px; font-size: 10px; font-weight: 800;
+}
+
+/* Thẻ chia sẻ */
+.share-card {
+  height: 60px; padding: 0 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; font-weight: 700; color: #475467;
+}
+
+.share-icons { display: flex; gap: 10px; }
+
+.share-btn {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: #eef4ff; color: #0b5ff3; display: grid; place-items: center;
+  font-size: 11px; font-weight: 900; border: none; cursor: pointer;
+}
+
+.share-btn:hover { background: #dbeafe; }
+
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .course-headline { font-size: 20px; }
+  .course-summary { font-size: 12px; }
+
+  .detail-body { grid-template-columns: 1fr; padding: 16px; }
+  .detail-sidebar { position: static; }
+
+  .video-preview { height: 200px; }
+  .learn-grid { grid-template-columns: repeat(2, 1fr); }
+  .tabs-bar { overflow-x: auto; gap: 18px; }
+}

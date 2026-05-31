@@ -1,0 +1,417 @@
+/* =============================================
+   learning-path.css — Trang lộ trình học
+   Thứ tự: hero → main → sidebar → filters → cards → footer → responsive
+   ============================================= */
+
+
+/* ── HERO OVERRIDE ── */
+.lp-hero { height: auto; padding-bottom: 36px; }
+
+.lp-hero .hero-art { width: 500px; }
+
+/* Đường cong nối các bước */
+.lp-curve {
+  position: absolute;
+  inset: 20px 10px;
+  border-top: 7px solid #82b8ff;
+  border-radius: 50%;
+  transform: rotate(-7deg);
+}
+
+/* Điểm tròn trên đường cong */
+.lp-dot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+.lp-d1 { left: 115px; top: 58px; }
+.lp-d2 { left: 295px; top: 38px; }
+.lp-d3 { left: 405px; top: 70px; }
+
+/* Icon tốt nghiệp góc phải */
+.lp-cap {
+  position: absolute;
+  right: 30px;
+  top: 18px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: white;
+  display: grid;
+  place-items: center;
+  font-size: 44px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Khối bước học */
+.lp-step {
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.lp-sico {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1a75ff;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.lp-step b   { display: block; font-size: 13px; font-weight: 700; }
+.lp-step span { font-size: 12px; color: #dce8ff; margin-top: 2px; display: block; }
+
+.lp-s1 { left: 55px;  top: 106px; }
+.lp-s2 { left: 245px; top: 106px; }
+.lp-s3 { left: 390px; top: 106px; }
+
+
+/* ── MAIN LAYOUT: SIDEBAR + CONTENT ── */
+.lp-main {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+
+/* ── SIDEBAR ── */
+.lp-sidebar { display: flex; flex-direction: column; gap: 14px; }
+
+.lp-panel {
+  background: white;
+  border: 1px solid #e5e9f4;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(28, 65, 135, 0.04);
+}
+
+.lp-panel > h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #17203a;
+  margin: 0 0 12px;
+}
+
+.lp-cat {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 10px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #33405f;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.lp-cat:hover  { background: #f4f7ff; color: #0758ff; }
+.lp-cat.active { background: #eaf1ff; color: #0758ff; }
+
+/* Panel gợi ý lộ trình bằng test */
+.lp-suggest { background: linear-gradient(145deg, #f8fbff, #eef5ff); }
+.lp-suggest h3 { font-size: 14px; color: #0b4ae8; }
+.lp-suggest p  { font-size: 13px; line-height: 1.5; color: #536078; margin: 0 0 14px; }
+
+.lp-test-btn {
+  width: 100%;
+  height: 36px;
+  background: #0758ff;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.lp-test-btn:hover { background: #0647d6; }
+
+
+/* ── FILTERS ── */
+.lp-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.lp-tabs { display: flex; gap: 10px; }
+
+.lp-tab {
+  height: 36px;
+  padding: 0 18px;
+  border: 1px solid #e7eaf2;
+  border-radius: 21px;
+  font-size: 13px;
+  font-weight: 700;
+  background: white;
+  color: #637083;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.lp-tab:hover  { border-color: #075fe2; color: #075fe2; }
+.lp-tab.active { background: #0758ff; color: white; border-color: #0758ff; }
+
+.lp-search-row { display: flex; gap: 10px; }
+
+.lp-input {
+  height: 36px;
+  border: 1px solid #e2e6f0;
+  border-radius: 10px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 13px;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.lp-input:focus-within { border-color: #075fe2; }
+
+.lp-input input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+  font-family: inherit;
+  color: #374151;
+  width: 160px;
+}
+
+.lp-input input::placeholder { color: #94a3b8; }
+
+.lp-sort {
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid #e2e6f0;
+  border-radius: 10px;
+  background: white;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.lp-sort:hover { border-color: #075fe2; }
+
+
+/* ── PATH CARDS ── */
+.lp-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.lp-card {
+  border: 1px solid #e4e8f2;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 6px 18px rgba(37, 67, 123, 0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.lp-card:hover { box-shadow: 0 12px 30px rgba(37, 67, 123, 0.12); transform: translateY(-2px); }
+
+/* Màu nền gradient mỗi card */
+.lp-green  { background: linear-gradient(135deg, #f0fff8, #fff); }
+.lp-orange { background: linear-gradient(135deg, #fff7ed, #fff); }
+.lp-purple { background: linear-gradient(135deg, #faf5ff, #fff); }
+.lp-cyan   { background: linear-gradient(135deg, #ecfeff, #fff); }
+.lp-pink   { background: linear-gradient(135deg, #fff1f2, #fff); }
+.lp-blue   { background: linear-gradient(135deg, #eff6ff, #fff); }
+
+/* Icon emoji trong box màu */
+.lp-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #bbf7d0;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.lp-icon-orange { background: #fed7aa; }
+.lp-icon-purple { background: #e9d5ff; }
+.lp-icon-cyan   { background: #a5f3fc; }
+.lp-icon-pink   { background: #fecdd3; }
+.lp-icon-blue   { background: #bfdbfe; }
+
+/* Nhãn tag góc trên phải */
+.lp-tag {
+  position: absolute;
+  right: 46px;
+  top: 18px;
+  border: 1px solid #86efac;
+  background: #f0fdf4;
+  color: #16a34a;
+  border-radius: 14px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.lp-tag-orange { color: #ea580c; border-color: #fdba74; background: #fff7ed; }
+.lp-tag-purple { color: #7c3aed; border-color: #c4b5fd; background: #f5f3ff; }
+.lp-tag-cyan   { color: #0e7490; border-color: #67e8f9; background: #ecfeff; }
+.lp-tag-pink   { color: #e11d48; border-color: #fda4af; background: #fff1f2; }
+.lp-tag-blue   { color: #1d4ed8; border-color: #93c5fd; background: #eff6ff; }
+
+/* Nút bookmark (heart) */
+.lp-bookmark {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px;
+  transition: color 0.2s;
+}
+
+.lp-bookmark:hover { color: #e11d48; }
+
+.lp-card h2 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+.lp-card p {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.55;
+  margin: 0 0 14px;
+  flex: 1;
+}
+
+.lp-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.lp-meta span { display: flex; align-items: center; gap: 5px; }
+
+.lp-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lp-faces { letter-spacing: -5px; font-size: 19px; }
+
+/* Nút "Xem chi tiết" — màu theo card */
+.lp-btn {
+  height: 32px;
+  padding: 0 16px;
+  border: 1.5px solid #16a34a;
+  color: #16a34a;
+  background: white;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+}
+
+.lp-btn:hover          { background: #16a34a; color: white; }
+.lp-btn-orange         { border-color: #ea580c; color: #ea580c; }
+.lp-btn-orange:hover   { background: #ea580c; color: white; }
+.lp-btn-purple         { border-color: #7c3aed; color: #7c3aed; }
+.lp-btn-purple:hover   { background: #7c3aed; color: white; }
+.lp-btn-cyan           { border-color: #0e7490; color: #0e7490; }
+.lp-btn-cyan:hover     { background: #0e7490; color: white; }
+.lp-btn-pink           { border-color: #e11d48; color: #e11d48; }
+.lp-btn-pink:hover     { background: #e11d48; color: white; }
+.lp-btn-blue           { border-color: #1d4ed8; color: #1d4ed8; }
+.lp-btn-blue:hover     { background: #1d4ed8; color: white; }
+
+
+/* ── FOOTER BANNER CHỨNG CHỈ ── */
+.lp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+  background: #eef5ff;
+  border-radius: 10px;
+  padding: 18px 24px;
+}
+
+.lp-footer b    { display: block; font-size: 14px; color: #0758ff; margin-bottom: 4px; }
+.lp-footer span { font-size: 12px; color: #5b667e; line-height: 1.5; }
+
+.lp-cert-btn {
+  flex-shrink: 0;
+  height: 38px;
+  padding: 0 28px;
+  background: #0758ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.lp-cert-btn:hover { background: #0647d6; }
+
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .lp-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 850px) {
+  .lp-hero .hero-art { opacity: 0.2; right: -80px; }
+  .lp-main { grid-template-columns: 1fr; }
+  .lp-cards { grid-template-columns: 1fr 1fr; }
+  .lp-filters { flex-direction: column; align-items: flex-start; }
+  .lp-search-row { display: none; }
+}
+
+@media (max-width: 540px) {
+  .lp-cards { grid-template-columns: 1fr; }
+}

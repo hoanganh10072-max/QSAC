@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QSAC - Lộ trình học</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/learning-path.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- ===== TOPBAR ===== -->
+    <header class="topbar">
+      <div class="logo">QSAC</div>
+      <nav class="nav">
+        <a href="../index.html">Đào tạo TMĐT</a>
+        <a href="courses.html">Khóa học</a>
+        <a href="schedule.html">Lịch khai giảng</a>
+        <a class="active" href="#">Lộ trình học</a>
+        <a href="teachers.html">Giảng viên</a>
+        <a href="certificates.html">Chứng chỉ</a>
+        <a href="support.html">Hỗ trợ</a>
+      </nav>
+      <div class="user">
+        <span class="bell">
+          <i class="fa-regular fa-bell"></i>
+          <em class="badge">3</em>
+        </span>
+        <span class="avatar">N</span>
+        <span>Nguyễn V.A <i class="fa-solid fa-chevron-down"></i></span>
+      </div>
+    </header>
+
+    <section class="content">
+
+      <!-- ===== HERO ===== -->
+      <div class="hero lp-hero">
+        <span class="pill">LỘ TRÌNH HỌC</span>
+        <h1>Học đúng lộ trình –<br>Bứt phá doanh thu</h1>
+        <p>Các lộ trình học được thiết kế bài bản, giúp bạn đi từ cơ bản đến chuyên sâu và ứng dụng thực chiến vào kinh doanh.</p>
+        <div class="stats">
+          <div class="stat"><span class="ico"><i class="fa-solid fa-map"></i></span><div><b>20+</b><span>Lộ trình học</span></div></div>
+          <div class="stat"><span class="ico"><i class="fa-solid fa-book-open"></i></span><div><b>200+</b><span>Khóa học</span></div></div>
+          <div class="stat"><span class="ico"><i class="fa-solid fa-users"></i></span><div><b>10.000+</b><span>Học viên đã học</span></div></div>
+        </div>
+        <!-- Minh họa trang trí bên phải -->
+        <div class="hero-art" aria-hidden="true">
+          <div class="lp-curve"></div>
+          <div class="lp-dot lp-d1"></div>
+          <div class="lp-dot lp-d2"></div>
+          <div class="lp-dot lp-d3"></div>
+          <div class="lp-cap">🎓</div>
+          <div class="lp-step lp-s1">
+            <span class="lp-sico"><i class="fa-solid fa-play"></i></span>
+            <div><b>Bắt đầu</b><span>Nền tảng vững chắc</span></div>
+          </div>
+          <div class="lp-step lp-s2">
+            <span class="lp-sico"><i class="fa-solid fa-check"></i></span>
+            <div><b>Thực hành</b><span>Ứng dụng thực tế</span></div>
+          </div>
+          <div class="lp-step lp-s3">
+            <span class="lp-sico"><i class="fa-solid fa-rocket"></i></span>
+            <div><b>Bứt phá</b><span>Tối ưu & Mở rộng</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== MAIN: SIDEBAR + NỘI DUNG ===== -->
+      <div class="lp-main">
+
+        <!-- Sidebar danh mục -->
+        <aside class="lp-sidebar">
+          <div class="lp-panel">
+            <h3>Danh mục lộ trình</h3>
+            <div class="lp-cat active" data-cat="all"><i class="fa-solid fa-border-all"></i> Tất cả lộ trình</div>
+            <div class="lp-cat" data-cat="new"><i class="fa-solid fa-seedling"></i> Dành cho người mới</div>
+            <div class="lp-cat" data-cat="shopee"><i class="fa-solid fa-store"></i> Bán hàng trên Shopee</div>
+            <div class="lp-cat" data-cat="lazada"><i class="fa-solid fa-tag"></i> Bán hàng trên Lazada</div>
+            <div class="lp-cat" data-cat="tiktok"><i class="fa-brands fa-tiktok"></i> TikTok Shop</div>
+            <div class="lp-cat" data-cat="livestream"><i class="fa-solid fa-circle-dot"></i> Livestream bán hàng</div>
+            <div class="lp-cat" data-cat="marketing"><i class="fa-solid fa-bullhorn"></i> Marketing & Quảng cáo</div>
+            <div class="lp-cat" data-cat="ops"><i class="fa-solid fa-headset"></i> Vận hành & Chăm sóc KH</div>
+            <div class="lp-cat" data-cat="brand"><i class="fa-solid fa-star"></i> Xây dựng thương hiệu</div>
+          </div>
+          <div class="lp-panel lp-suggest">
+            <h3>Chưa biết bắt đầu từ đâu?</h3>
+            <p>Làm bài test để được gợi ý lộ trình phù hợp với bạn.</p>
+            <button class="lp-test-btn">Làm test ngay</button>
+          </div>
+        </aside>
+
+        <!-- Khu vực nội dung -->
+        <div class="lp-content">
+
+          <!-- Bộ lọc: cấp độ + tìm kiếm + sắp xếp -->
+          <div class="lp-filters">
+            <div class="lp-tabs">
+              <button class="lp-tab active">Tất cả</button>
+              <button class="lp-tab">Cơ bản</button>
+              <button class="lp-tab">Trung cấp</button>
+              <button class="lp-tab">Nâng cao</button>
+            </div>
+            <div class="lp-search-row">
+              <label class="lp-input">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Tìm lộ trình học..." aria-label="Tìm lộ trình học">
+              </label>
+              <button class="lp-sort">Sắp xếp: Phổ biến nhất <i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+          </div>
+
+          <!-- Lưới card lộ trình -->
+          <div class="lp-cards">
+
+            <div class="lp-card lp-green">
+              <div class="lp-icon">🛍️</div>
+              <span class="lp-tag">Phù hợp cho người mới</span>
+              <button class="lp-bookmark" aria-label="Lưu lộ trình"><i class="fa-regular fa-heart"></i></button>
+              <h2>1. Người mới bắt đầu TMĐT</h2>
+              <p>Lộ trình dành cho người mới, giúp bạn nắm vững kiến thức nền tảng để bắt đầu kinh doanh online hiệu quả.</p>
+              <div class="lp-meta">
+                <span><i class="fa-solid fa-border-all"></i> 7 khóa học</span>
+                <span><i class="fa-regular fa-clock"></i> 32 giờ học</span>
+              </div>
+              <div class="lp-bottom">
+                <span class="lp-faces">👩👨👩👨</span>
+                <button class="lp-btn">Xem chi tiết</button>
+              </div>
+            </div>
+
+            <div class="lp-card lp-orange">
+              <div class="lp-icon lp-icon-orange">🛒</div>
+              <span class="lp-tag lp-tag-orange">Bán chạy</span>
+              <button class="lp-bookmark" aria-label="Lưu lộ trình"><i class="fa-regular fa-heart"></i></button>
+              <h2>2. Bán hàng chuyên nghiệp trên Shopee</h2>
+              <p>Từ mở gian hàng đến tối ưu doanh thu với các chiến lược và công cụ bán hàng trên Shopee.</p>
+              <div class="lp-meta">
+                <span><i class="fa-solid fa-border-all"></i> 9 khóa học</span>
+                <span><i class="fa-regular fa-clock"></i> 45 giờ học</span>
+              </div>
+              <div class="lp-bottom">
+                <span class="lp-faces">👩👨👩👨</span>
+                <button class="lp-btn lp-btn-orange">Xem chi tiết</button>
+              </div>
+            </div>
+
+            <div class="lp-card lp-purple">
+              <div class="lp-icon lp-icon-purple">📦</div>
+              <span class="lp-tag lp-tag-purple">Bán chạy</span>
+              <button class="lp-bookmark" aria-label="Lưu lộ trình"><i class="fa-regular fa-heart"></i></button>
+              <h2>3. Bán hàng hiệu quả trên Lazada</h2>
+              <p>Hướng dẫn toàn diện để xây dựng gian hàng, chạy quảng cáo và tối ưu doanh số trên Lazada.</p>
+              <div class="lp-meta">
+                <span><i class="fa-solid fa-border-all"></i> 8 khóa học</span>
+                <span><i class="fa-regular fa-clock"></i> 40 giờ học</span>
+              </div>
+              <div class="lp-bottom">
+                <span class="lp-faces">👩👨👩👨</span>
+                <button class="lp-btn lp-btn-purple">Xem chi tiết</button>
+              </div>
+            </div>
+
+            <div class="lp-card lp-cyan">
+              <div class="lp-icon lp-icon-cyan">🎵</div>
+              <span class="lp-tag lp-tag-cyan">Xu hướng</span>
+              <button class="lp-bookmark" aria-label="Lưu lộ trình"><i class="fa-regular fa-heart"></i></button>
+              <h2>4. TikTok Shop từ A-Z</h2>
+              <p>Khám phá cách bán hàng trên TikTok Shop, tạo nội dung thu hút và xây kênh tăng trưởng doanh thu bền vững.</p>
+              <div class="lp-meta">
+                <span><i class="fa-solid fa-border-all"></i> 10 khóa học</span>
+                <span><i class="fa-regular fa-clock"></i> 48 giờ học</span>
+              </div>
+              <div class="lp-bottom">
+                <span class="lp-faces">👩👨👩👨</span>
+                <button class="lp-btn lp-btn-cyan">Xem chi tiết</button>
+              </div>
+            </div>
+
+            <div class="lp-card lp-pink">
+              <div class="lp-icon lp-icon-pink">🔴</div>
+              <span class="lp-tag lp-tag-pink">Thực chiến</span>
+              <button class="lp-bookmark" aria-label="Lưu lộ trình"><i class="fa-regular fa-heart"></i></button>
+              <h2>5. Livestream bán hàng đỉnh cao</h2>
+              <p>Bí quyết livestream thu hút, chốt đơn hiệu quả và xây dựng kịch bản livestream chuyên nghiệp.</p>
+              <div class="lp-meta">
+                <span><i class="fa-solid fa-border-all"></i> 6 khóa học</span>
+                <span><i class="fa-regular fa-clock"></i> 26 giờ học</span>
+              </div>
+              <div class="lp-bottom">
+                <span class="lp-faces">👩👨👩👨</span>
+                <button class="lp-btn lp-btn-pink">Xem chi tiết</button>
+              </div>
+            </div>
+
+            <div class="lp-card lp-blue">
+              <div class="lp-icon lp-icon-blue">🚀</div>
+              <span class="lp-tag lp-tag-blue">Nâng cao</span>
+              <button class="lp-bookmark" aria-label="Lưu lộ trình"><i class="fa-regular fa-heart"></i></button>
+              <h2>6. Marketing & Quảng cáo TMĐT</h2>
+              <p>Chiến lược marketing tổng thể và các kỹ thuật quảng cáo giúp tăng traffic và tối ưu chi phí quảng cáo.</p>
+              <div class="lp-meta">
+                <span><i class="fa-solid fa-border-all"></i> 11 khóa học</span>
+                <span><i class="fa-regular fa-clock"></i> 55 giờ học</span>
+              </div>
+              <div class="lp-bottom">
+                <span class="lp-faces">👩👨👩👨</span>
+                <button class="lp-btn lp-btn-blue">Xem chi tiết</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Footer: banner chứng chỉ -->
+          <div class="lp-footer">
+            <div>
+              <b>🎓 Học theo lộ trình – Nhận chứng chỉ</b>
+              <span>Hoàn thành lộ trình để nhận chứng chỉ từ QSAC, giúp bạn tăng uy tín và cơ hội phát triển sự nghiệp.</span>
+            </div>
+            <button class="lp-cert-btn">Xem chứng chỉ</button>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="../js/learning-path.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QSAC - Đào tạo TMĐT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- ===== TOPBAR ===== -->
+    <header class="topbar">
+      <div class="logo">QSAC</div>
+      <nav class="nav">
+        <a class="active" href="#">Đào tạo TMĐT</a>
+        <a href="pages/courses.html">Khóa học</a>
+        <a href="pages/schedule.html">Lịch khai giảng</a>
+        <a href="pages/learning-path.html">Lộ trình học</a>
+        <a href="pages/teachers.html">Giảng viên</a>
+        <a href="pages/certificates.html">Chứng chỉ</a>
+        <a href="pages/support.html">Hỗ trợ</a>
+      </nav>
+      <div class="user">
+        <span class="bell"><i class="fa-regular fa-bell"></i></span>
+        <span class="avatar">N</span>
+        <span>Nguyễn V.A <i class="fa-solid fa-chevron-down"></i></span>
+      </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <section class="content">
+
+      <!-- Hero banner -->
+      <div class="hero">
+        <span class="pill"><i class="fa-solid fa-star-of-life"></i> NỀN TẢNG ĐÀO TẠO HÀNG ĐẦU</span>
+        <h1>Đào tạo & cấp chứng chỉ<br>thương mại điện tử</h1>
+        <p>Chương trình bồi dưỡng chính thức cho cá nhân, doanh nghiệp<br>và hộ kinh doanh trên các sàn TMĐT lớn.</p>
+        <div class="hero-btns">
+          <a class="hbtn-primary" href="pages/courses.html">Xem khóa học <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="hbtn-outline" href="pages/schedule.html"><i class="fa-regular fa-calendar"></i> Lịch khai giảng</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><span class="ico"><i class="fa-solid fa-users"></i></span><div><b>2.847</b><span>Học viên</span></div></div>
+          <div class="stat"><span class="ico"><i class="fa-solid fa-book-open"></i></span><div><b>12</b><span>Khóa học</span></div></div>
+          <div class="stat"><span class="ico"><i class="fa-solid fa-certificate"></i></span><div><b>Chứng chỉ</b><span>Bộ Công Thương</span></div></div>
+        </div>
+        <!-- Decorative illustration -->
+        <div class="hero-art" aria-hidden="true">
+          <!-- Main chart card -->
+          <div class="hcard">
+            <div class="hcard-label"><i class="fa-solid fa-chart-line"></i> Tăng trưởng học viên</div>
+            <div class="hcard-chart">
+              <i class="hbar hb-1"></i>
+              <i class="hbar hb-2"></i>
+              <i class="hbar hb-3"></i>
+              <i class="hbar hb-4"></i>
+              <i class="hbar hb-5"></i>
+            </div>
+            <div class="hcard-num">+38% <span>so với tháng trước</span></div>
+          </div>
+          <!-- Floating badges -->
+          <div class="hfloat hf1">
+            <i class="fa-solid fa-circle-check"></i>
+            <div><b>Chứng chỉ chính thức</b><small>Bộ Công Thương</small></div>
+          </div>
+          <div class="hfloat hf2">
+            <i class="fa-solid fa-star"></i>
+            <div><b>4.9 / 5.0</b><small>Đánh giá học viên</small></div>
+          </div>
+          <div class="hfloat hf3">
+            <i class="fa-solid fa-users"></i>
+            <div><b>2.847+</b><small>Đang học</small></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course filters -->
+      <div class="filters">
+        <button class="chip active" data-filter="all"><i class="fa-solid fa-border-all"></i> Tất cả</button>
+        <button class="chip" data-filter="basic"><i class="fa-solid fa-seedling"></i> Cơ bản</button>
+        <button class="chip" data-filter="advanced"><i class="fa-solid fa-chart-line"></i> Nâng cao</button>
+        <button class="chip" data-filter="marketing"><i class="fa-solid fa-bullhorn"></i> Marketing số</button>
+        <button class="chip" data-filter="legal"><i class="fa-solid fa-scale-balanced"></i> Pháp lý TMĐT</button>
+        <button class="chip" data-filter="operations"><i class="fa-solid fa-store"></i> Vận hành sàn</button>
+        <div class="search" role="search">
+          <span>Tìm khóa học...</span>
+          <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </div>
+      </div>
+
+      <!-- Cards header: tiêu đề + link xem tất cả -->
+      <div class="cards-header">
+        <h2>Khóa học nổi bật</h2>
+        <a class="view-all" href="pages/courses.html">Xem tất cả <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <!-- Course cards grid -->
+      <div class="cards">
+
+        <article class="course" data-category="basic">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/tmdt-intro/400/240" alt="Nhập môn Thương mại điện tử">
+            <span class="tag tag-basic">CƠ BẢN</span>
+          </div>
+          <div class="course-body">
+            <h3>Nhập môn Thương mại điện tử cho người mới</h3>
+            <div class="meta"><i class="fa-regular fa-circle-user"></i> GV. Trần Thị Hà · 6 tuần · 24 bài</div>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span>4.8 (1.240 học viên)</span>
+            </div>
+            <div class="price-row">
+              <div class="price">1.500.000đ</div>
+              <a class="detail" href="pages/course-detail.html?id=1">Chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="course" data-category="advanced">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/shopee-course/400/240" alt="Bán hàng Shopee Lazada">
+            <span class="tag tag-advanced">NÂNG CAO</span>
+          </div>
+          <div class="course-body">
+            <h3>Bán hàng chuyên nghiệp trên Shopee & Lazada</h3>
+            <div class="meta"><i class="fa-regular fa-circle-user"></i> GV. Lê Văn Bình · 8 tuần · 32 bài</div>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span>4.9 (890 học viên)</span>
+            </div>
+            <div class="old">3.500.000đ</div>
+            <div class="price-row">
+              <div class="price green-price">2.800.000đ</div>
+              <a class="detail green-btn" href="pages/course-detail.html?id=2">Chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="course" data-category="marketing">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/digital-marketing/400/240" alt="Marketing số TMĐT">
+            <span class="tag tag-marketing">MARKETING SỐ</span>
+          </div>
+          <div class="course-body">
+            <h3>Marketing số & SEO cho sàn thương mại điện tử</h3>
+            <div class="meta"><i class="fa-regular fa-circle-user"></i> GV. Phạm Minh Tuấn · 7 tuần · 28 bài</div>
+            <div class="rating">
+              <span class="stars">★★★★☆</span>
+              <span>4.7 (654 học viên)</span>
+            </div>
+            <div class="old">2.800.000đ</div>
+            <div class="price-row">
+              <div class="price purple-price">2.200.000đ</div>
+              <a class="detail purple-btn" href="pages/course-detail.html?id=3">Chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="course" data-category="legal">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/law-ecommerce/400/240" alt="Pháp lý TMĐT">
+            <span class="tag tag-legal">PHÁP LÝ</span>
+          </div>
+          <div class="course-body">
+            <h3>Pháp lý TMĐT & Hợp đồng thương mại điện tử</h3>
+            <div class="meta"><i class="fa-regular fa-circle-user"></i> GV. Nguyễn Thu Hương · 5 tuần · 20 bài</div>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span>4.8 (312 học viên)</span>
+            </div>
+            <div class="price-row">
+              <div class="price orange-price">1.800.000đ</div>
+              <a class="detail orange-btn" href="pages/course-detail.html?id=4">Chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="course" data-category="operations">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/ecommerce-ops/400/240" alt="Vận hành sàn TMĐT">
+            <span class="tag tag-operations">VẬN HÀNH</span>
+          </div>
+          <div class="course-body">
+            <h3>Vận hành sàn TMĐT chuyên nghiệp từ A–Z</h3>
+            <div class="meta"><i class="fa-regular fa-circle-user"></i> GV. Đỗ Quang Huy · 9 tuần · 36 bài</div>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span>4.9 (478 học viên)</span>
+            </div>
+            <div class="old">4.200.000đ</div>
+            <div class="price-row">
+              <div class="price teal-price">3.500.000đ</div>
+              <a class="detail teal-btn" href="pages/course-detail.html?id=5">Chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="course" data-category="basic">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/logistics-store/400/240" alt="Logistics kho hàng">
+            <span class="tag tag-basic">CƠ BẢN</span>
+          </div>
+          <div class="course-body">
+            <h3>Quản lý kho hàng & Logistics TMĐT hiệu quả</h3>
+            <div class="meta"><i class="fa-regular fa-circle-user"></i> GV. Trần Đức Long · 6 tuần · 24 bài</div>
+            <div class="rating">
+              <span class="stars">★★★★☆</span>
+              <span>4.6 (521 học viên)</span>
+            </div>
+            <div class="price-row">
+              <div class="price">1.600.000đ</div>
+              <a class="detail" href="pages/course-detail.html?id=6">Chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="course" data-category="advanced">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/brand-online/400/240" alt="Xây dựng thương hiệu online">
+            <span class="tag tag-advanced">NÂNG CAO</span>
+          </div>
+          <div class="course-body">
+            <h3>Xây dựng thương hiệu cá nhân & doanh nghiệp online</h3>
+            <div class="meta"><i class="fa-regular fa-circle-user"></i> GV. Vũ Thị Mai · 8 tuần · 30 bài</div>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span>4.8 (389 học viên)</span>
+            </div>
+            <div class="old">3.200.000đ</div>
+            <div class="price-row">
+              <div class="price green-price">2.500.000đ</div>
+              <a class="detail green-btn" href="pages/course-detail.html?id=7">Chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="course" data-category="advanced">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/data-analytics/400/240" alt="Phân tích dữ liệu TMĐT">
+            <span class="tag tag-advanced">NÂNG CAO</span>
+          </div>
+          <div class="course-body">
+            <h3>Phân tích dữ liệu & Báo cáo kinh doanh TMĐT</h3>
+            <div class="meta"><i class="fa-regular fa-circle-user"></i> GV. Ngô Thành Nam · 7 tuần · 28 bài</div>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span>4.9 (267 học viên)</span>
+            </div>
+            <div class="price-row">
+              <div class="price green-price">2.900.000đ</div>
+              <a class="detail green-btn" href="pages/course-detail.html?id=8">Chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Benefits bar -->
+      <div class="benefits">
+        <div class="benefit">
+          <i class="fa-solid fa-shield-halved"></i>
+          <div><b>Chứng chỉ chính thức</b><span>của Bộ Công Thương</span></div>
+        </div>
+        <div class="benefit">
+          <i class="fa-solid fa-chalkboard-user"></i>
+          <div><b>Giảng viên chuyên gia</b><span>Kinh nghiệm thực chiến</span></div>
+        </div>
+        <div class="benefit">
+          <i class="fa-regular fa-clock"></i>
+          <div><b>Học mọi lúc, mọi nơi</b><span>Linh hoạt thời gian</span></div>
+        </div>
+        <div class="benefit">
+          <i class="fa-solid fa-headset"></i>
+          <div><b>Hỗ trợ 24/7</b><span>Đồng hành cùng bạn</span></div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
