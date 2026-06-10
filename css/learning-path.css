@@ -41,9 +41,10 @@
   height: 88px;
   border-radius: 50%;
   background: white;
+  color: #0758ff;
   display: grid;
   place-items: center;
-  font-size: 44px;
+  font-size: 38px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -247,24 +248,25 @@
 .lp-pink   { background: linear-gradient(135deg, #fff1f2, #fff); }
 .lp-blue   { background: linear-gradient(135deg, #eff6ff, #fff); }
 
-/* Icon emoji trong box màu */
+/* Icon Font Awesome trong box màu — màu icon match với màu chủ đạo của card */
 .lp-icon {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: #bbf7d0;
+  background: #d1fae5;
+  color: #16a34a;
   display: grid;
   place-items: center;
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 14px;
   flex-shrink: 0;
 }
 
-.lp-icon-orange { background: #fed7aa; }
-.lp-icon-purple { background: #e9d5ff; }
-.lp-icon-cyan   { background: #a5f3fc; }
-.lp-icon-pink   { background: #fecdd3; }
-.lp-icon-blue   { background: #bfdbfe; }
+.lp-icon-orange { background: #ffedd5; color: #ea580c; }
+.lp-icon-purple { background: #ede9fe; color: #7c3aed; }
+.lp-icon-cyan   { background: #cffafe; color: #0e7490; }
+.lp-icon-pink   { background: #ffe4e6; color: #e11d48; }
+.lp-icon-blue   { background: #dbeafe; color: #1d4ed8; }
 
 /* Nhãn tag góc trên phải */
 .lp-tag {
@@ -335,7 +337,27 @@
   justify-content: space-between;
 }
 
-.lp-faces { letter-spacing: -5px; font-size: 19px; }
+/* Avatar circles — thay cho emoji 👩👨, chuyên nghiệp hơn */
+.lp-faces { display: inline-flex; }
+.lp-faces em {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  border: 2px solid white;
+  margin-left: -8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.lp-faces em:first-child { margin-left: 0; }
+.lp-faces em[data-c="1"] { background: #f87171; }
+.lp-faces em[data-c="2"] { background: #60a5fa; }
+.lp-faces em[data-c="3"] { background: #fbbf24; }
+.lp-faces em[data-c="4"] { background: #34d399; }
 
 /* Nút "Xem chi tiết" — màu theo card */
 .lp-btn {

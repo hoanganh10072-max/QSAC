@@ -357,7 +357,16 @@
   cursor: default;
 }
 
-/* Ngày có khai giảng — chấm xanh bên dưới */
+/* Ngày có khai giảng — chấm xanh bên dưới + clickable */
+.cal-days span.ev {
+  cursor: pointer;
+  color: #0b55ee;
+  font-weight: 700;
+  transition: background 0.15s;
+}
+
+.cal-days span.ev:hover { background: #eff4ff; }
+
 .cal-days span.ev::after {
   content: '';
   width: 4px;
@@ -367,6 +376,30 @@
   display: block;
   margin-top: 1px;
 }
+
+/* Ô trống đầu/cuối tháng — vẫn chiếm chỗ để giữ alignment */
+.cal-days span.empty { visibility: hidden; }
+
+/* Ngày hôm nay — nền xanh nổi bật */
+.cal-days span.today {
+  background: #0b55ee;
+  color: #fff;
+  font-weight: 700;
+}
+.cal-days span.today::after { background: #fff; }
+
+/* Flash highlight cho row khi click ngày có khai giảng */
+@keyframes schedRowFlash {
+  0%, 100% {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(22, 48, 99, 0.04);
+  }
+  30% {
+    background: #fffbeb;
+    box-shadow: 0 0 0 3px #fbbf24, 0 8px 22px rgba(22, 48, 99, 0.12);
+  }
+}
+.sched-row-flash { animation: schedRowFlash 1.4s ease; }
 
 .cal-legend {
   display: flex;

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>QSAC Admin · Đơn hàng</title>
+  <!-- Guard: chặn truy cập khi chưa login, redirect trước khi body render -->
+  <script src="../js/admin-guard.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin-crud.css">
+</head>
+<body>
+  <div class="adm-app">
+    <aside class="adm-side" aria-label="Menu quản trị">
+      <div class="adm-side-logo">QSAC <span>ADMIN</span></div>
+      <nav class="adm-nav">
+        <a class="adm-nav-item" href="dashboard.html"><i class="fa-solid fa-gauge-high"></i> Tổng quan</a>
+        <a class="adm-nav-item" href="courses.html"><i class="fa-solid fa-book-open"></i> Khoá học</a>
+        <a class="adm-nav-item" href="students.html"><i class="fa-solid fa-user-graduate"></i> Học viên</a>
+        <a class="adm-nav-item" href="orders.html"><i class="fa-solid fa-receipt"></i> Đơn hàng</a>
+        <a class="adm-nav-item" href="teachers.html"><i class="fa-solid fa-chalkboard-user"></i> Giảng viên</a>
+        <a class="adm-nav-item" href="certificates.html"><i class="fa-solid fa-certificate"></i> Chứng chỉ</a>
+        <a class="adm-nav-item" href="settings.html"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+      </nav>
+      <div class="adm-side-foot">
+        <a href="../index.html" class="adm-side-back"><i class="fa-solid fa-globe"></i> Xem trang chính</a>
+      </div>
+    </aside>
+
+    <main class="adm-main">
+      <header class="adm-top">
+        <div class="adm-top-title">
+          <h1>Quản lý đơn hàng</h1>
+          <p class="adm-top-sub">Theo dõi và xử lý đơn đăng ký khoá học.</p>
+        </div>
+        <div class="adm-top-right">
+          <div class="adm-user">
+            <span class="adm-avatar" id="admAvatar">A</span>
+            <div class="adm-user-meta"><b id="admName">Quản trị viên</b><small>admin@qsac.vn</small></div>
+            <button class="adm-logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i></button>
+          </div>
+        </div>
+      </header>
+
+      <div class="adm-page-head">
+        <div></div>
+        <button class="adm-btn-primary" id="btnAdd"><i class="fa-solid fa-plus"></i> Thêm đơn hàng</button>
+      </div>
+
+      <div class="adm-toolbar">
+        <div class="adm-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Tìm theo mã, học viên, khoá..." />
+        </div>
+        <select id="filterStatus">
+          <option value="">Mọi trạng thái</option>
+          <option value="paid">Đã thanh toán</option>
+          <option value="pending">Chờ thanh toán</option>
+          <option value="cancelled">Đã huỷ</option>
+        </select>
+        <select id="filterMethod">
+          <option value="">Mọi phương thức</option>
+          <option value="bank">Chuyển khoản</option>
+          <option value="card">Thẻ tín dụng</option>
+          <option value="momo">MoMo</option>
+          <option value="cash">Tiền mặt</option>
+        </select>
+        <span class="adm-count" id="rowCount">0 đơn</span>
+      </div>
+
+      <section class="adm-panel">
+        <div class="adm-table-wrap">
+          <table class="adm-table">
+            <thead>
+              <tr>
+                <th>Mã đơn</th>
+                <th>Học viên</th>
+                <th>Khoá học</th>
+                <th>Số tiền</th>
+                <th>Phương thức</th>
+                <th>Ngày tạo</th>
+                <th>Trạng thái</th>
+                <th style="width:96px">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="dataBody"></tbody>
+          </table>
+        </div>
+        <div id="emptyState" class="adm-empty" hidden>
+          <i class="fa-solid fa-receipt"></i>
+          Không có đơn hàng nào khớp bộ lọc.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="adm-modal" id="formModal" role="dialog">
+    <div class="adm-modal-card">
+      <div class="adm-modal-head">
+        <h2 class="adm-modal-title" id="formTitle">Thêm đơn hàng</h2>
+        <button class="adm-modal-close" data-close-modal="formModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="dataForm" class="adm-form-grid" novalidate>
+        <label>Mã đơn
+          <input type="text" name="code" required placeholder="#QS10428" />
+          <span class="err" data-err="code"></span>
+        </label>
+        <label>Ngày tạo
+          <input type="date" name="createdAt" required />
+          <span class="err" data-err="createdAt"></span>
+        </label>
+        <label class="full">Học viên
+          <input type="text" name="student" required placeholder="Nguyễn Văn A" />
+          <span class="err" data-err="student"></span>
+        </label>
+        <label class="full">Khoá học
+          <input type="text" name="course" required placeholder="Marketing số & SEO" />
+          <span class="err" data-err="course"></span>
+        </label>
+        <label>Số tiền (VNĐ)
+          <input type="number" name="amount" required min="0" step="1000" placeholder="2200000" />
+          <span class="err" data-err="amount"></span>
+        </label>
+        <label>Phương thức
+          <select name="method">
+            <option value="bank">Chuyển khoản</option>
+            <option value="card">Thẻ tín dụng</option>
+            <option value="momo">MoMo</option>
+            <option value="cash">Tiền mặt</option>
+          </select>
+        </label>
+        <label class="full">Trạng thái
+          <select name="status">
+            <option value="paid">Đã thanh toán</option>
+            <option value="pending">Chờ thanh toán</option>
+            <option value="cancelled">Đã huỷ</option>
+          </select>
+        </label>
+        <div class="adm-modal-actions full">
+          <button type="button" class="adm-btn-ghost" data-close-modal="formModal">Huỷ</button>
+          <button type="submit" class="adm-btn-primary"><i class="fa-solid fa-floppy-disk"></i> Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/admin-shared.js" defer></script>
+  <script src="../js/admin-orders.js" defer></script>
+</body>
+</html>

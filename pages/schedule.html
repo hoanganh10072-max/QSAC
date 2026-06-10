@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -63,17 +63,15 @@
             </div>
           </div>
 
-          <!-- Bộ lọc -->
+          <!-- Bộ lọc — chip filter theo cấp độ, JS bind data-filter -->
           <div class="sched-controls">
             <div class="sched-chips">
-              <button class="chip active">Tất cả</button>
-              <button class="chip">Cơ bản</button>
-              <button class="chip">Nâng cao</button>
-              <button class="chip">Marketing</button>
-              <button class="chip">Livestream</button>
-              <button class="chip">TikTok Shop</button>
-              <button class="chip">Shopee</button>
-              <button class="chip">Lazada</button>
+              <button class="chip active" data-filter="all">Tất cả</button>
+              <button class="chip" data-filter="basic">Cơ bản</button>
+              <button class="chip" data-filter="advanced">Nâng cao</button>
+              <button class="chip" data-filter="marketing">Marketing số</button>
+              <button class="chip" data-filter="legal">Pháp lý</button>
+              <button class="chip" data-filter="operations">Vận hành</button>
             </div>
             <div class="sched-filter-row">
               <div class="sf-input"><i class="fa-solid fa-magnifying-glass"></i><span>Tìm khóa học...</span></div>
@@ -83,133 +81,8 @@
             </div>
           </div>
 
-          <!-- Danh sách khóa học -->
-          <div class="sched-list">
-
-            <div class="sched-row">
-              <div class="sched-thumb">
-                <img src="https://picsum.photos/seed/shopee-sched/130/70" alt="Shopee A-Z">
-                <span class="sched-label sl-hot">HOT</span>
-                <button class="sched-play"><i class="fa-solid fa-play"></i></button>
-              </div>
-              <div class="sched-info">
-                <h3>Bán hàng Shopee từ A-Z cho người mới bắt đầu</h3>
-                <div class="smeta"><i class="fa-regular fa-circle-user"></i> GV. Trần Thị Hà</div>
-                <div class="smeta"><i class="fa-solid fa-book-open"></i> 24 bài · <i class="fa-regular fa-clock"></i> 6 tuần · Cơ bản</div>
-                <div class="smeta s-rating"><i class="fa-solid fa-star"></i> 4.8 <span>(1.240 học viên)</span></div>
-              </div>
-              <div class="sched-date">
-                <b><i class="fa-regular fa-calendar"></i> 06/06/2026</b>
-                <span>Thứ 7, 20:00 – 22:00</span>
-                <em><i class="fa-solid fa-circle"></i> Còn 35 chỗ</em>
-              </div>
-              <div class="sched-price">
-                <del>2.000.000đ</del>
-                <b>1.500.000đ</b>
-                <button class="reg-btn">Đăng ký ngay</button>
-              </div>
-              <button class="sched-heart" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            </div>
-
-            <div class="sched-row">
-              <div class="sched-thumb">
-                <img src="https://picsum.photos/seed/lazada-sched/130/70" alt="Lazada">
-                <span class="sched-label sl-best">BESTSELLER</span>
-                <button class="sched-play"><i class="fa-solid fa-play"></i></button>
-              </div>
-              <div class="sched-info">
-                <h3>Bán hàng Lazada hiệu quả và tối ưu doanh thu</h3>
-                <div class="smeta"><i class="fa-regular fa-circle-user"></i> GV. Lê Văn Bình</div>
-                <div class="smeta"><i class="fa-solid fa-book-open"></i> 32 bài · <i class="fa-regular fa-clock"></i> 8 tuần · Nâng cao</div>
-                <div class="smeta s-rating"><i class="fa-solid fa-star"></i> 4.9 <span>(890 học viên)</span></div>
-              </div>
-              <div class="sched-date">
-                <b><i class="fa-regular fa-calendar"></i> 10/06/2026</b>
-                <span>Thứ 4, 19:30 – 21:30</span>
-                <em><i class="fa-solid fa-circle"></i> Còn 28 chỗ</em>
-              </div>
-              <div class="sched-price">
-                <del>3.500.000đ</del>
-                <b>2.800.000đ</b>
-                <button class="reg-btn">Đăng ký ngay</button>
-              </div>
-              <button class="sched-heart" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            </div>
-
-            <div class="sched-row">
-              <div class="sched-thumb">
-                <img src="https://picsum.photos/seed/tiktok-sched/130/70" alt="TikTok Shop">
-                <span class="sched-label sl-new">NEW</span>
-                <button class="sched-play"><i class="fa-solid fa-play"></i></button>
-              </div>
-              <div class="sched-info">
-                <h3>TikTok Shop Mastery: Bứt phá doanh số từ nội dung</h3>
-                <div class="smeta"><i class="fa-regular fa-circle-user"></i> GV. Phạm Minh Đức</div>
-                <div class="smeta"><i class="fa-solid fa-book-open"></i> 28 bài · <i class="fa-regular fa-clock"></i> 6 tuần · Nâng cao</div>
-                <div class="smeta s-rating"><i class="fa-solid fa-star"></i> 4.7 <span>(620 học viên)</span></div>
-              </div>
-              <div class="sched-date">
-                <b><i class="fa-regular fa-calendar"></i> 14/06/2026</b>
-                <span>Thứ 7, 20:00 – 22:00</span>
-                <em><i class="fa-solid fa-circle"></i> Còn 42 chỗ</em>
-              </div>
-              <div class="sched-price">
-                <del>2.500.000đ</del>
-                <b>1.800.000đ</b>
-                <button class="reg-btn">Đăng ký ngay</button>
-              </div>
-              <button class="sched-heart" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            </div>
-
-            <div class="sched-row">
-              <div class="sched-thumb">
-                <img src="https://picsum.photos/seed/live-sched/130/70" alt="Livestream">
-                <button class="sched-play"><i class="fa-solid fa-play"></i></button>
-              </div>
-              <div class="sched-info">
-                <h3>Livestream bán hàng chuyên nghiệp trên mọi sàn</h3>
-                <div class="smeta"><i class="fa-regular fa-circle-user"></i> GV. Nguyễn Tỳ Lan</div>
-                <div class="smeta"><i class="fa-solid fa-book-open"></i> 20 bài · <i class="fa-regular fa-clock"></i> 5 tuần · Cơ bản</div>
-                <div class="smeta s-rating"><i class="fa-solid fa-star"></i> 4.8 <span>(530 học viên)</span></div>
-              </div>
-              <div class="sched-date">
-                <b><i class="fa-regular fa-calendar"></i> 17/06/2026</b>
-                <span>Thứ 3, 19:30 – 21:30</span>
-                <em><i class="fa-solid fa-circle"></i> Còn 30 chỗ</em>
-              </div>
-              <div class="sched-price">
-                <del>1.800.000đ</del>
-                <b>1.200.000đ</b>
-                <button class="reg-btn">Đăng ký ngay</button>
-              </div>
-              <button class="sched-heart" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            </div>
-
-            <div class="sched-row">
-              <div class="sched-thumb">
-                <img src="https://picsum.photos/seed/mkt-sched/130/70" alt="Marketing số">
-                <button class="sched-play"><i class="fa-solid fa-play"></i></button>
-              </div>
-              <div class="sched-info">
-                <h3>Marketing số & SEO cho sàn thương mại điện tử</h3>
-                <div class="smeta"><i class="fa-regular fa-circle-user"></i> GV. Phạm Minh Tuấn</div>
-                <div class="smeta"><i class="fa-solid fa-book-open"></i> 28 bài · <i class="fa-regular fa-clock"></i> 7 tuần · Nâng cao</div>
-                <div class="smeta s-rating"><i class="fa-solid fa-star"></i> 4.7 <span>(654 học viên)</span></div>
-              </div>
-              <div class="sched-date">
-                <b><i class="fa-regular fa-calendar"></i> 21/06/2026</b>
-                <span>Thứ 7, 20:00 – 22:00</span>
-                <em><i class="fa-solid fa-circle"></i> Còn 20 chỗ</em>
-              </div>
-              <div class="sched-price">
-                <del>2.800.000đ</del>
-                <b>2.200.000đ</b>
-                <button class="reg-btn">Đăng ký ngay</button>
-              </div>
-              <button class="sched-heart" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            </div>
-
-          </div>
+          <!-- Danh sách khóa học — render động từ PublicData.getSchedule() -->
+          <div class="sched-list" id="schedList"></div>
 
           <div class="sched-more">
             <button>Xem thêm khóa học <i class="fa-solid fa-chevron-down"></i></button>
@@ -220,27 +93,18 @@
         <!-- ── CỘT PHẢI: SIDEBAR ── -->
         <aside class="sidebar">
 
-          <!-- Calendar -->
+          <!-- Calendar — JS render ô ngày + chấm "ev" cho ngày có lịch khai giảng -->
           <div class="side-card">
             <h3>Lịch khai giảng</h3>
             <div class="cal-month-nav">
-              <button class="cal-nav">‹</button>
-              <span>Tháng 06/2026</span>
-              <button class="cal-nav">›</button>
+              <button class="cal-nav" data-cal-nav="prev">‹</button>
+              <span id="calMonthLabel">Tháng 06/2026</span>
+              <button class="cal-nav" data-cal-nav="next">›</button>
             </div>
             <div class="cal-week">
               <span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
             </div>
-            <div class="cal-days">
-              <span class="ev">1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-              <span class="ev">6</span><span>7</span><span>8</span><span>9</span>
-              <span class="ev">10</span><span>11</span><span>12</span><span>13</span>
-              <span class="ev">14</span><span>15</span><span>16</span>
-              <span class="ev">17</span><span>18</span><span>19</span><span>20</span>
-              <span class="ev">21</span><span>22</span><span>23</span>
-              <span class="ev">24</span><span>25</span><span>26</span><span>27</span>
-              <span>28</span><span>29</span><span>30</span>
-            </div>
+            <div class="cal-days" id="calDays" aria-live="polite"></div>
             <div class="cal-legend">
               <span><em class="dot-ev"></em>Có khai giảng</span>
             </div>
@@ -282,6 +146,7 @@
 
   </main>
 
+  <script src="../js/public-data.js" defer></script>
   <script src="../js/schedule.js" defer></script>
 </body>
 </html>

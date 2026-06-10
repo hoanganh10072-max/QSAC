@@ -1,0 +1,221 @@
+/* =============================================
+   admin-teachers.css — Bổ sung style cho trang Quản lý giảng viên
+   Dùng cho: admin/teachers.html
+   Nội dung: avatar tròn → sort header → pager → view modal
+   Lưu ý: tokens (--adm-*) kế thừa từ admin.css, không định nghĩa lại.
+   ============================================= */
+
+/* ============ 1. AVATAR Ô BẢNG ============ */
+
+/* Ô avatar tròn: ảnh thật hoặc chữ cái đầu (fallback) */
+.tv-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--adm-border);
+  background: #f1f5f9;
+}
+.tv-avatar-fb {
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--adm-primary);
+  background: linear-gradient(135deg, #e0eaff, #f4f8ff);
+}
+
+/* ============ 2. SORT HEADER ============ */
+
+.tv-table thead th.tv-sortable {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: color .15s;
+}
+.tv-table thead th.tv-sortable:hover { color: var(--adm-primary); }
+.tv-table thead th.tv-sortable.active { color: var(--adm-primary); }
+
+.tv-sort-ico {
+  font-size: 10px;
+  margin-left: 4px;
+  opacity: .55;
+}
+.tv-table thead th.tv-sortable.active .tv-sort-ico { opacity: 1; }
+
+/* Pill mute dành cho status "Tạm nghỉ" */
+.adm-pill.mute {
+  background: #f1f5f9;
+  color: var(--adm-muted);
+}
+
+/* ============ 3. PAGINATION ============ */
+
+.tv-pager {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px 4px;
+  flex-wrap: wrap;
+}
+
+.tv-pg-btn,
+.tv-pg-num {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--adm-border);
+  background: #fff;
+  color: var(--adm-text);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.tv-pg-btn:hover:not(:disabled),
+.tv-pg-num:hover { background: #f1f5f9; }
+
+.tv-pg-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.tv-pg-num.active {
+  background: var(--adm-primary);
+  border-color: var(--adm-primary);
+  color: #fff;
+}
+
+.tv-pg-nums {
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tv-pg-dots {
+  width: 24px;
+  text-align: center;
+  color: var(--adm-muted);
+}
+
+.tv-pg-info {
+  margin-left: auto;
+  color: var(--adm-muted);
+  font-size: 12px;
+}
+
+/* ============ 4. VIEW MODAL (HỒ SƠ CHI TIẾT) ============ */
+
+/* Card xem hồ sơ rộng hơn modal CRUD bình thường để chứa grid info */
+.adm-modal-card.tv-view-card {
+  max-width: 640px;
+  width: 92vw;
+}
+
+.tv-view-body {
+  padding: 4px 4px 8px;
+}
+
+/* Header: avatar + tên + chức danh + status */
+.tv-view-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--adm-border);
+  margin-bottom: 16px;
+}
+
+.tv-view-ava {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--adm-border);
+  background: #f1f5f9;
+  flex-shrink: 0;
+  font-size: 28px;
+}
+
+.tv-view-head h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--adm-text);
+}
+.tv-view-head p {
+  margin: 0 0 8px;
+  color: var(--adm-muted);
+  font-size: 13px;
+}
+
+/* Grid 2 cột cho cặp dt/dd (Email, ĐT, Rating, ...) */
+.tv-view-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  margin: 0 0 16px;
+}
+.tv-view-grid > div { min-width: 0; }
+.tv-view-grid dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--adm-muted);
+  margin-bottom: 2px;
+}
+.tv-view-grid dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--adm-text);
+  word-break: break-word;
+}
+
+/* Bio: chữ thường, mềm hơn để phân biệt với grid */
+.tv-view-bio h4,
+.tv-view-courses h4 {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--adm-text);
+}
+.tv-view-bio p {
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--adm-muted);
+}
+
+/* Danh sách khoá học giảng viên phụ trách */
+.tv-view-courses ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tv-view-courses li {
+  background: #f8fafd;
+  border: 1px solid var(--adm-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+.tv-view-courses li.tv-view-empty {
+  color: var(--adm-muted);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ============ 5. RESPONSIVE ============ */
+
+@media (max-width: 720px) {
+  .tv-view-grid { grid-template-columns: 1fr; }
+  .tv-view-head { flex-direction: column; text-align: center; }
+  .tv-pg-info { width: 100%; text-align: center; margin: 4px 0 0; }
+}

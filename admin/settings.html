@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>QSAC Admin · Cài đặt</title>
+  <!-- Guard: chặn truy cập khi chưa login, redirect trước khi body render -->
+  <script src="../js/admin-guard.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin-crud.css">
+</head>
+<body>
+  <div class="adm-app">
+    <aside class="adm-side" aria-label="Menu quản trị">
+      <div class="adm-side-logo">QSAC <span>ADMIN</span></div>
+      <nav class="adm-nav">
+        <a class="adm-nav-item" href="dashboard.html"><i class="fa-solid fa-gauge-high"></i> Tổng quan</a>
+        <a class="adm-nav-item" href="courses.html"><i class="fa-solid fa-book-open"></i> Khoá học</a>
+        <a class="adm-nav-item" href="students.html"><i class="fa-solid fa-user-graduate"></i> Học viên</a>
+        <a class="adm-nav-item" href="orders.html"><i class="fa-solid fa-receipt"></i> Đơn hàng</a>
+        <a class="adm-nav-item" href="teachers.html"><i class="fa-solid fa-chalkboard-user"></i> Giảng viên</a>
+        <a class="adm-nav-item" href="certificates.html"><i class="fa-solid fa-certificate"></i> Chứng chỉ</a>
+        <a class="adm-nav-item" href="settings.html"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+      </nav>
+      <div class="adm-side-foot">
+        <a href="../index.html" class="adm-side-back"><i class="fa-solid fa-globe"></i> Xem trang chính</a>
+      </div>
+    </aside>
+
+    <main class="adm-main">
+      <header class="adm-top">
+        <div class="adm-top-title">
+          <h1>Cài đặt hệ thống</h1>
+          <p class="adm-top-sub">Cấu hình website, tài khoản quản trị và dữ liệu mẫu.</p>
+        </div>
+        <div class="adm-top-right">
+          <div class="adm-user">
+            <span class="adm-avatar" id="admAvatar">A</span>
+            <div class="adm-user-meta"><b id="admName">Quản trị viên</b><small>admin@qsac.vn</small></div>
+            <button class="adm-logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i></button>
+          </div>
+        </div>
+      </header>
+
+      <div class="adm-settings-grid">
+
+        <!-- ── Cấu hình website ── -->
+        <section class="adm-panel">
+          <h2 class="adm-section-title"><i class="fa-solid fa-globe"></i> Cấu hình website</h2>
+          <form id="configForm" class="adm-form-grid" novalidate>
+            <label class="full">Tên website
+              <input type="text" name="siteName" placeholder="QSAC - Đào tạo TMĐT" />
+            </label>
+            <label>Email liên hệ
+              <input type="email" name="email" placeholder="lienhe@qsac.vn" />
+            </label>
+            <label>Hotline
+              <input type="tel" name="hotline" placeholder="1900xxxx" />
+            </label>
+            <label class="full">Địa chỉ
+              <input type="text" name="address" placeholder="123 Đường ABC, Quận 1, TP.HCM" />
+            </label>
+            <label class="full">Giới thiệu ngắn
+              <textarea name="intro" placeholder="Chương trình đào tạo TMĐT chính thức..."></textarea>
+            </label>
+            <div class="adm-modal-actions full">
+              <button type="submit" class="adm-btn-primary"><i class="fa-solid fa-floppy-disk"></i> Lưu cấu hình</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ── Đổi mật khẩu admin ── -->
+        <section class="adm-panel">
+          <h2 class="adm-section-title"><i class="fa-solid fa-key"></i> Đổi mật khẩu</h2>
+          <form id="pwdForm" class="adm-form-grid" novalidate>
+            <label class="full">Mật khẩu hiện tại
+              <input type="password" name="oldPwd" required />
+              <span class="err" data-err="oldPwd"></span>
+            </label>
+            <label class="full">Mật khẩu mới
+              <input type="password" name="newPwd" required minlength="6" />
+              <span class="err" data-err="newPwd"></span>
+            </label>
+            <label class="full">Xác nhận mật khẩu mới
+              <input type="password" name="confirmPwd" required />
+              <span class="err" data-err="confirmPwd"></span>
+            </label>
+            <div class="adm-modal-actions full">
+              <button type="submit" class="adm-btn-primary"><i class="fa-solid fa-shield-halved"></i> Đổi mật khẩu</button>
+            </div>
+          </form>
+          <p style="font-size:12px;color:var(--adm-muted);margin-top:10px">
+            <i class="fa-solid fa-circle-info"></i> Chỉ áp dụng cho phiên demo (localStorage). Khi gắn backend, sẽ gọi API auth thật.
+          </p>
+        </section>
+
+        <!-- ── Tài khoản quản trị (CRUD) ── -->
+        <section class="adm-panel full">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+            <h2 class="adm-section-title" style="margin:0"><i class="fa-solid fa-users-gear"></i> Tài khoản quản trị</h2>
+            <button class="adm-btn-primary" id="btnAdd"><i class="fa-solid fa-plus"></i> Thêm tài khoản</button>
+          </div>
+          <div class="adm-table-wrap">
+            <table class="adm-table">
+              <thead>
+                <tr>
+                  <th>Tên đăng nhập</th>
+                  <th>Họ tên</th>
+                  <th>Email</th>
+                  <th>Vai trò</th>
+                  <th>Trạng thái</th>
+                  <th style="width:96px">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="dataBody"></tbody>
+            </table>
+          </div>
+          <div id="emptyState" class="adm-empty" hidden>
+            <i class="fa-solid fa-user-shield"></i>
+            Chưa có tài khoản quản trị nào.
+          </div>
+        </section>
+
+        <!-- ── Quản lý dữ liệu ── -->
+        <section class="adm-panel full">
+          <h2 class="adm-section-title"><i class="fa-solid fa-database"></i> Quản lý dữ liệu</h2>
+          <p style="color:var(--adm-muted);font-size:13px;margin-bottom:14px">
+            Dữ liệu các module đang lưu trong <code>localStorage</code> trình duyệt. Có thể xuất ra file JSON để backup, hoặc khôi phục lại mặc định.
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="adm-btn" id="btnExport"><i class="fa-solid fa-download"></i> Xuất dữ liệu (JSON)</button>
+            <label class="adm-btn" style="margin:0;cursor:pointer">
+              <i class="fa-solid fa-upload"></i> Nhập dữ liệu
+              <input type="file" id="importFile" accept="application/json" hidden />
+            </label>
+            <button class="adm-btn" id="btnResetData" style="border-color:#fecaca;color:var(--adm-danger)">
+              <i class="fa-solid fa-rotate-left"></i> Khôi phục dữ liệu mẫu
+            </button>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: thêm/sửa tài khoản admin -->
+  <div class="adm-modal" id="formModal" role="dialog">
+    <div class="adm-modal-card">
+      <div class="adm-modal-head">
+        <h2 class="adm-modal-title" id="formTitle">Thêm tài khoản</h2>
+        <button class="adm-modal-close" data-close-modal="formModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="userForm" class="adm-form-grid" novalidate>
+        <label>Tên đăng nhập
+          <input type="text" name="username" required placeholder="admin2" />
+          <span class="err" data-err="username"></span>
+        </label>
+        <label>Họ và tên
+          <input type="text" name="fullName" required placeholder="Trần Văn B" />
+          <span class="err" data-err="fullName"></span>
+        </label>
+        <label>Email
+          <input type="email" name="email" required placeholder="email@qsac.vn" />
+          <span class="err" data-err="email"></span>
+        </label>
+        <label>Vai trò
+          <select name="role">
+            <option value="admin">Quản trị viên</option>
+            <option value="editor">Biên tập viên</option>
+            <option value="support">Hỗ trợ</option>
+          </select>
+        </label>
+        <label class="full">Trạng thái
+          <select name="status">
+            <option value="active">Hoạt động</option>
+            <option value="locked">Đã khoá</option>
+          </select>
+        </label>
+        <div class="adm-modal-actions full">
+          <button type="button" class="adm-btn-ghost" data-close-modal="formModal">Huỷ</button>
+          <button type="submit" class="adm-btn-primary"><i class="fa-solid fa-floppy-disk"></i> Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/admin-shared.js" defer></script>
+  <script src="../js/admin-settings.js" defer></script>
+</body>
+</html>

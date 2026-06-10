@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>QSAC Admin · Bảng điều khiển</title>
+
+  <!-- Guard: chặn truy cập khi chưa login, redirect trước khi body render -->
+  <script src="../js/admin-guard.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin-crud.css">
+</head>
+<body>
+  <div class="adm-app">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="adm-side" aria-label="Menu quản trị">
+      <div class="adm-side-logo">QSAC <span>ADMIN</span></div>
+
+      <!-- Sidebar dùng chung cho mọi trang admin; active state set bằng JS theo URL -->
+      <nav class="adm-nav">
+        <a class="adm-nav-item" href="dashboard.html">
+          <i class="fa-solid fa-gauge-high"></i> Tổng quan
+        </a>
+        <a class="adm-nav-item" href="courses.html">
+          <i class="fa-solid fa-book-open"></i> Khóa học
+        </a>
+        <a class="adm-nav-item" href="students.html">
+          <i class="fa-solid fa-user-graduate"></i> Học viên
+        </a>
+        <a class="adm-nav-item" href="orders.html">
+          <i class="fa-solid fa-receipt"></i> Đơn hàng
+        </a>
+        <a class="adm-nav-item" href="teachers.html">
+          <i class="fa-solid fa-chalkboard-user"></i> Giảng viên
+        </a>
+        <a class="adm-nav-item" href="certificates.html">
+          <i class="fa-solid fa-certificate"></i> Chứng chỉ
+        </a>
+        <a class="adm-nav-item" href="settings.html">
+          <i class="fa-solid fa-gear"></i> Cài đặt
+        </a>
+      </nav>
+
+      <div class="adm-side-foot">
+        <a href="../index.html" class="adm-side-back">
+          <i class="fa-solid fa-globe"></i> Xem trang chính
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <main class="adm-main">
+
+      <!-- Topbar -->
+      <header class="adm-top">
+        <div class="adm-top-title">
+          <h1>Tổng quan</h1>
+          <p class="adm-top-sub">Tóm tắt hoạt động đào tạo &amp; doanh thu hôm nay.</p>
+        </div>
+        <div class="adm-top-right">
+          <div class="adm-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Tìm học viên, khóa học, đơn hàng..." />
+          </div>
+          <button class="adm-bell" aria-label="Thông báo">
+            <i class="fa-regular fa-bell"></i>
+            <span class="adm-dot"></span>
+          </button>
+          <div class="adm-user" id="admUser">
+            <span class="adm-avatar" id="admAvatar">A</span>
+            <div class="adm-user-meta">
+              <b id="admName">Quản trị viên</b>
+              <small>admin@qsac.vn</small>
+            </div>
+            <button class="adm-logout" id="logoutBtn" title="Đăng xuất">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Stats cards: dữ liệu mock, dễ thay bằng API sau -->
+      <section class="adm-stats">
+        <article class="adm-stat sc-blue">
+          <div class="adm-stat-icon"><i class="fa-solid fa-users"></i></div>
+          <div class="adm-stat-body">
+            <span>Học viên</span>
+            <b>2.847</b>
+            <small><i class="fa-solid fa-arrow-up"></i> +12.4% tuần này</small>
+          </div>
+        </article>
+        <article class="adm-stat sc-green">
+          <div class="adm-stat-icon"><i class="fa-solid fa-book-open"></i></div>
+          <div class="adm-stat-body">
+            <span>Khóa học</span>
+            <b>12</b>
+            <small><i class="fa-solid fa-arrow-up"></i> +2 khóa mới</small>
+          </div>
+        </article>
+        <article class="adm-stat sc-orange">
+          <div class="adm-stat-icon"><i class="fa-solid fa-receipt"></i></div>
+          <div class="adm-stat-body">
+            <span>Đơn hàng</span>
+            <b>184</b>
+            <small><i class="fa-solid fa-arrow-up"></i> +8% so với hôm qua</small>
+          </div>
+        </article>
+        <article class="adm-stat sc-purple">
+          <div class="adm-stat-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+          <div class="adm-stat-body">
+            <span>Doanh thu tháng</span>
+            <b>412.5M</b>
+            <small><i class="fa-solid fa-arrow-up"></i> +23.1% MoM</small>
+          </div>
+        </article>
+      </section>
+
+      <!-- 2 cột: bảng đơn hàng gần đây + sidebar khóa học hot -->
+      <section class="adm-grid">
+        <article class="adm-panel">
+          <header class="adm-panel-head">
+            <h2>Đơn hàng gần đây</h2>
+            <a href="#" class="adm-link">Xem tất cả <i class="fa-solid fa-arrow-right"></i></a>
+          </header>
+          <div class="adm-table-wrap">
+            <table class="adm-table">
+              <thead>
+                <tr>
+                  <th>Mã đơn</th>
+                  <th>Học viên</th>
+                  <th>Khóa học</th>
+                  <th>Số tiền</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>#QS10428</b></td>
+                  <td>Nguyễn V.A</td>
+                  <td>Marketing số &amp; SEO</td>
+                  <td>2.200.000đ</td>
+                  <td><span class="adm-pill ok">Đã thanh toán</span></td>
+                </tr>
+                <tr>
+                  <td><b>#QS10427</b></td>
+                  <td>Lê Thị Hoa</td>
+                  <td>Vận hành sàn TMĐT A–Z</td>
+                  <td>3.500.000đ</td>
+                  <td><span class="adm-pill warn">Chờ chuyển khoản</span></td>
+                </tr>
+                <tr>
+                  <td><b>#QS10426</b></td>
+                  <td>Phạm Quang</td>
+                  <td>Nhập môn TMĐT</td>
+                  <td>1.500.000đ</td>
+                  <td><span class="adm-pill ok">Đã thanh toán</span></td>
+                </tr>
+                <tr>
+                  <td><b>#QS10425</b></td>
+                  <td>Trần Bích</td>
+                  <td>Pháp lý TMĐT</td>
+                  <td>1.800.000đ</td>
+                  <td><span class="adm-pill cancel">Đã hủy</span></td>
+                </tr>
+                <tr>
+                  <td><b>#QS10424</b></td>
+                  <td>Vũ Minh</td>
+                  <td>Shopee &amp; Lazada</td>
+                  <td>2.800.000đ</td>
+                  <td><span class="adm-pill ok">Đã thanh toán</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <aside class="adm-panel">
+          <header class="adm-panel-head">
+            <h2>Khóa học bán chạy</h2>
+          </header>
+          <ul class="adm-rank">
+            <li>
+              <span class="adm-rank-no">01</span>
+              <div>
+                <b>Vận hành sàn TMĐT A–Z</b>
+                <small>478 học viên · 4.9★</small>
+              </div>
+              <em>3.500.000đ</em>
+            </li>
+            <li>
+              <span class="adm-rank-no">02</span>
+              <div>
+                <b>Shopee &amp; Lazada chuyên nghiệp</b>
+                <small>890 học viên · 4.9★</small>
+              </div>
+              <em>2.800.000đ</em>
+            </li>
+            <li>
+              <span class="adm-rank-no">03</span>
+              <div>
+                <b>Marketing số &amp; SEO</b>
+                <small>654 học viên · 4.7★</small>
+              </div>
+              <em>2.200.000đ</em>
+            </li>
+            <li>
+              <span class="adm-rank-no">04</span>
+              <div>
+                <b>Phân tích dữ liệu TMĐT</b>
+                <small>267 học viên · 4.9★</small>
+              </div>
+              <em>2.900.000đ</em>
+            </li>
+          </ul>
+        </aside>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="../js/admin-shared.js" defer></script>
+  <script src="../js/admin-dashboard.js" defer></script>
+</body>
+</html>

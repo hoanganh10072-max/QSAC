@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>QSAC Admin · Giảng viên</title>
+  <!-- Guard: chặn truy cập khi chưa login, redirect trước khi body render -->
+  <script src="../js/admin-guard.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin-crud.css">
+  <link rel="stylesheet" href="../css/admin-teachers.css">
+</head>
+<body>
+  <div class="adm-app">
+    <aside class="adm-side" aria-label="Menu quản trị">
+      <div class="adm-side-logo">QSAC <span>ADMIN</span></div>
+      <nav class="adm-nav">
+        <a class="adm-nav-item" href="dashboard.html"><i class="fa-solid fa-gauge-high"></i> Tổng quan</a>
+        <a class="adm-nav-item" href="courses.html"><i class="fa-solid fa-book-open"></i> Khoá học</a>
+        <a class="adm-nav-item" href="students.html"><i class="fa-solid fa-user-graduate"></i> Học viên</a>
+        <a class="adm-nav-item" href="orders.html"><i class="fa-solid fa-receipt"></i> Đơn hàng</a>
+        <a class="adm-nav-item" href="teachers.html"><i class="fa-solid fa-chalkboard-user"></i> Giảng viên</a>
+        <a class="adm-nav-item" href="certificates.html"><i class="fa-solid fa-certificate"></i> Chứng chỉ</a>
+        <a class="adm-nav-item" href="settings.html"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+      </nav>
+      <div class="adm-side-foot">
+        <a href="../index.html" class="adm-side-back"><i class="fa-solid fa-globe"></i> Xem trang chính</a>
+      </div>
+    </aside>
+
+    <main class="adm-main">
+      <header class="adm-top">
+        <div class="adm-top-title">
+          <h1>Quản lý giảng viên</h1>
+          <p class="adm-top-sub">Danh sách giảng viên cộng tác đào tạo.</p>
+        </div>
+        <div class="adm-top-right">
+          <div class="adm-user">
+            <span class="adm-avatar" id="admAvatar">A</span>
+            <div class="adm-user-meta"><b id="admName">Quản trị viên</b><small>admin@qsac.vn</small></div>
+            <button class="adm-logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i></button>
+          </div>
+        </div>
+      </header>
+
+      <div class="adm-page-head">
+        <div></div>
+        <button class="adm-btn-primary" id="btnAdd"><i class="fa-solid fa-plus"></i> Thêm giảng viên</button>
+      </div>
+
+      <!-- Toolbar: search + filter chuyên môn + filter trạng thái -->
+      <div class="adm-toolbar">
+        <div class="adm-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Tìm theo tên, chuyên môn..." />
+        </div>
+        <select id="filterExpertise">
+          <option value="">Mọi chuyên môn</option>
+          <option value="basic">TMĐT cơ bản</option>
+          <option value="advanced">Bán hàng nâng cao</option>
+          <option value="marketing">Marketing số</option>
+          <option value="legal">Pháp lý</option>
+          <option value="operations">Vận hành</option>
+          <option value="data">Phân tích dữ liệu</option>
+        </select>
+        <select id="filterStatus">
+          <option value="">Mọi trạng thái</option>
+          <option value="active">Đang hợp tác</option>
+          <option value="inactive">Tạm nghỉ</option>
+          <option value="pending">Chờ duyệt</option>
+        </select>
+        <span class="adm-count" id="rowCount">0 giảng viên</span>
+      </div>
+
+      <section class="adm-panel">
+        <div class="adm-table-wrap">
+          <!-- Header có data-sort = sortable; rỗng = không sort -->
+          <table class="adm-table tv-table">
+            <thead>
+              <tr>
+                <th style="width:56px"></th>
+                <th class="tv-sortable" data-sort="name">Họ tên <i class="fa-solid fa-sort tv-sort-ico"></i></th>
+                <th>Chức danh</th>
+                <th>Liên hệ</th>
+                <th>Chuyên môn</th>
+                <th class="tv-sortable" data-sort="coursesCount">Khoá <i class="fa-solid fa-sort tv-sort-ico"></i></th>
+                <th class="tv-sortable" data-sort="rating">Rating <i class="fa-solid fa-sort tv-sort-ico"></i></th>
+                <th>Trạng thái</th>
+                <th style="width:128px">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="dataBody"></tbody>
+          </table>
+        </div>
+        <div id="emptyState" class="adm-empty" hidden>
+          <i class="fa-solid fa-chalkboard-user"></i>
+          Không có giảng viên nào khớp bộ lọc.
+        </div>
+
+        <!-- Pagination: render bằng JS, ẩn nếu chỉ 1 trang -->
+        <div class="tv-pager" id="pager" hidden>
+          <button class="tv-pg-btn" id="pgPrev"><i class="fa-solid fa-chevron-left"></i></button>
+          <span class="tv-pg-nums" id="pgNums"></span>
+          <button class="tv-pg-btn" id="pgNext"><i class="fa-solid fa-chevron-right"></i></button>
+          <span class="tv-pg-info" id="pgInfo"></span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===== Modal: Thêm / Sửa giảng viên ===== -->
+  <div class="adm-modal" id="formModal" role="dialog">
+    <div class="adm-modal-card">
+      <div class="adm-modal-head">
+        <h2 class="adm-modal-title" id="formTitle">Thêm giảng viên</h2>
+        <button class="adm-modal-close" data-close-modal="formModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="dataForm" class="adm-form-grid" novalidate>
+        <label class="full">Họ và tên
+          <input type="text" name="name" required placeholder="Trần Thị Hà" />
+          <span class="err" data-err="name"></span>
+        </label>
+        <label>Chức danh
+          <input type="text" name="title" required placeholder="ThS. Marketing số" />
+          <span class="err" data-err="title"></span>
+        </label>
+        <label>Chuyên môn
+          <select name="expertise" required>
+            <option value="">-- Chọn --</option>
+            <option value="basic">TMĐT cơ bản</option>
+            <option value="advanced">Bán hàng nâng cao</option>
+            <option value="marketing">Marketing số</option>
+            <option value="legal">Pháp lý</option>
+            <option value="operations">Vận hành</option>
+            <option value="data">Phân tích dữ liệu</option>
+          </select>
+          <span class="err" data-err="expertise"></span>
+        </label>
+        <label>Email
+          <input type="email" name="email" required placeholder="gv@qsac.vn" />
+          <span class="err" data-err="email"></span>
+        </label>
+        <label>Điện thoại
+          <input type="tel" name="phone" required placeholder="09xxxxxxxx" />
+          <span class="err" data-err="phone"></span>
+        </label>
+        <label>Số năm kinh nghiệm
+          <input type="number" name="experience" min="0" max="60" value="3" />
+        </label>
+        <label>Trạng thái
+          <select name="status">
+            <option value="active">Đang hợp tác</option>
+            <option value="inactive">Tạm nghỉ</option>
+            <option value="pending">Chờ duyệt</option>
+          </select>
+        </label>
+        <label>Ngày tham gia
+          <input type="date" name="joinedAt" />
+        </label>
+        <label>Rating (0-5)
+          <input type="number" name="rating" min="0" max="5" step="0.1" value="4.8" />
+        </label>
+        <label class="full">Ảnh đại diện (URL)
+          <input type="url" name="avatar" placeholder="https://... hoặc để trống dùng chữ cái đầu" />
+        </label>
+        <label class="full">Giới thiệu ngắn
+          <textarea name="bio" rows="3" placeholder="Vài dòng mô tả về giảng viên..."></textarea>
+        </label>
+        <div class="adm-modal-actions full">
+          <button type="button" class="adm-btn-ghost" data-close-modal="formModal">Huỷ</button>
+          <button type="submit" class="adm-btn-primary"><i class="fa-solid fa-floppy-disk"></i> Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Modal: Xem chi tiết giảng viên (read-only) ===== -->
+  <div class="adm-modal" id="viewModal" role="dialog">
+    <div class="adm-modal-card tv-view-card">
+      <div class="adm-modal-head">
+        <h2 class="adm-modal-title">Hồ sơ giảng viên</h2>
+        <button class="adm-modal-close" data-close-modal="viewModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="tv-view-body" id="viewBody"></div>
+      <div class="adm-modal-actions">
+        <button type="button" class="adm-btn-ghost" data-close-modal="viewModal">Đóng</button>
+        <button type="button" class="adm-btn-primary" id="viewEditBtn"><i class="fa-solid fa-pen"></i> Sửa hồ sơ</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/admin-shared.js" defer></script>
+  <script src="../js/admin-teachers.js" defer></script>
+</body>
+</html>

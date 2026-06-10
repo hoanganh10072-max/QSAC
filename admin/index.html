@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>QSAC Admin · Đăng nhập</title>
+
+  <!-- Fonts + icons dùng chung với phần public -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Đường dẫn CSS dùng "../" vì trang nằm trong /admin/ -->
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <main class="adm-login-wrap">
+
+    <!-- ===== Card đăng nhập ===== -->
+    <section class="adm-login-card" aria-labelledby="loginTitle">
+      <!-- Logo + tiêu đề -->
+      <div class="adm-login-head">
+        <div class="adm-logo">QSAC <span>ADMIN</span></div>
+        <h1 id="loginTitle">Đăng nhập quản trị</h1>
+        <p class="adm-sub">Chỉ dành cho quản trị viên hệ thống đào tạo.</p>
+      </div>
+
+      <!-- Form login: validate bằng JS trong js/admin-login.js -->
+      <form id="loginForm" class="adm-form" novalidate>
+
+        <!-- Thông báo lỗi tổng (sai mật khẩu / thiếu trường) -->
+        <div id="loginError" class="adm-alert" role="alert" hidden>
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span class="adm-alert-msg"></span>
+        </div>
+
+        <div class="adm-field">
+          <label for="username">Tên đăng nhập</label>
+          <div class="adm-input">
+            <i class="fa-solid fa-user"></i>
+            <input id="username" name="username" type="text" autocomplete="username"
+                   placeholder="admin" required />
+          </div>
+        </div>
+
+        <div class="adm-field">
+          <label for="password">Mật khẩu</label>
+          <div class="adm-input">
+            <i class="fa-solid fa-lock"></i>
+            <input id="password" name="password" type="password" autocomplete="current-password"
+                   placeholder="••••••••" required />
+            <!-- Toggle hiện/ẩn mật khẩu -->
+            <button type="button" class="adm-eye" id="togglePwd" aria-label="Hiện mật khẩu">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="adm-row-between">
+          <label class="adm-check">
+            <input type="checkbox" id="remember" />
+            <span>Ghi nhớ đăng nhập</span>
+          </label>
+          <a href="../pages/support.html" class="adm-link">Quên mật khẩu?</a>
+        </div>
+
+        <button type="submit" class="adm-btn-primary" id="loginBtn">
+          <span class="adm-btn-text">Đăng nhập</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <!-- Gợi ý credential demo — xoá khi tích hợp backend thật -->
+        <p class="adm-hint">
+          <i class="fa-solid fa-circle-info"></i>
+          Tài khoản demo: <b>admin</b> / <b>qsac@2026</b>
+        </p>
+      </form>
+
+      <div class="adm-foot">
+        <a href="../index.html"><i class="fa-solid fa-arrow-left-long"></i> Về trang chính</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/admin-login.js" defer></script>
+</body>
+</html>

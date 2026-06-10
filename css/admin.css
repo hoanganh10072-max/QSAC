@@ -1,0 +1,453 @@
+/* =============================================
+   admin.css — Styles cho khu vực /admin/
+   Dùng cho: admin/index.html (login), admin/dashboard.html
+   Thứ tự: tokens → login → dashboard layout → sidebar
+            → topbar → stats → grid panels → table → rank → responsive
+   ============================================= */
+
+/* ── Tokens riêng cho admin (kế thừa nền từ global.css) ── */
+:root {
+  --adm-bg: #f4f6fb;
+  --adm-card: #ffffff;
+  --adm-border: #e5eaf2;
+  --adm-text: #152034;
+  --adm-muted: #64748b;
+  --adm-primary: #0b55d9;
+  --adm-primary-dark: #0846b3;
+  --adm-danger: #dc2626;
+  --adm-ok: #16a34a;
+  --adm-warn: #d97706;
+  --adm-shadow: 0 4px 18px rgba(15, 32, 63, 0.06);
+}
+
+body { background: var(--adm-bg); }
+
+/* ============ LOGIN ============ */
+
+/* Wrap toàn màn hình, gradient nhẹ, căn giữa card */
+.adm-login-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+  background:
+    radial-gradient(1200px 400px at 20% -10%, #dbe7ff 0%, transparent 60%),
+    radial-gradient(800px 300px at 100% 100%, #e7f0ff 0%, transparent 60%),
+    var(--adm-bg);
+}
+
+.adm-login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--adm-card);
+  border: 1px solid var(--adm-border);
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: var(--adm-shadow);
+}
+
+.adm-login-head { text-align: center; margin-bottom: 24px; }
+
+.adm-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--adm-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+.adm-logo span {
+  background: #eef3ff;
+  color: var(--adm-primary);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.adm-login-head h1 { font-size: 22px; font-weight: 700; }
+.adm-sub { color: var(--adm-muted); font-size: 13px; margin-top: 6px; }
+
+/* ── Form fields ── */
+.adm-form { display: flex; flex-direction: column; gap: 14px; }
+.adm-field { display: flex; flex-direction: column; gap: 6px; }
+.adm-field label { font-size: 13px; font-weight: 600; color: #334155; }
+
+.adm-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--adm-border);
+  border-radius: 10px;
+  background: #f8fafd;
+  transition: border-color .15s, background .15s;
+}
+.adm-input:focus-within {
+  border-color: var(--adm-primary);
+  background: #fff;
+}
+.adm-input > i {
+  position: absolute;
+  left: 12px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+.adm-input input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  outline: none;
+  padding: 12px 14px 12px 38px;
+  font: inherit;
+  color: var(--adm-text);
+}
+
+/* Nút hiện/ẩn mật khẩu nằm trong ô input */
+.adm-eye {
+  border: 0;
+  background: transparent;
+  color: #94a3b8;
+  padding: 0 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.adm-eye:hover { color: var(--adm-primary); }
+
+/* Hàng "Ghi nhớ" + "Quên mật khẩu" */
+.adm-row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+.adm-check { display: flex; align-items: center; gap: 6px; color: #334155; cursor: pointer; }
+.adm-link { color: var(--adm-primary); text-decoration: none; font-weight: 600; }
+.adm-link:hover { text-decoration: underline; }
+
+/* Alert lỗi tổng cho form */
+.adm-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fef2f2;
+  color: var(--adm-danger);
+  border: 1px solid #fecaca;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Nút submit chính */
+.adm-btn-primary {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: var(--adm-primary);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .15s, transform .05s;
+}
+.adm-btn-primary:hover { background: var(--adm-primary-dark); }
+.adm-btn-primary:active { transform: translateY(1px); }
+.adm-btn-primary[disabled] { opacity: .6; cursor: progress; }
+
+.adm-hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--adm-muted);
+  margin-top: 4px;
+}
+.adm-hint i { color: var(--adm-primary); margin-right: 4px; }
+
+.adm-foot {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--adm-border);
+  text-align: center;
+}
+.adm-foot a { color: var(--adm-muted); text-decoration: none; font-size: 13px; }
+.adm-foot a:hover { color: var(--adm-primary); }
+
+/* ============ DASHBOARD LAYOUT ============ */
+.adm-app {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ── */
+.adm-side {
+  background: #0f1c34;
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.adm-side-logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  padding: 4px 8px 18px;
+  border-bottom: 1px solid #1e2c4a;
+  margin-bottom: 14px;
+}
+.adm-side-logo span {
+  background: #1e3a8a;
+  color: #c7d2fe;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  margin-left: 4px;
+  font-weight: 700;
+}
+
+.adm-nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.adm-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background .15s, color .15s;
+}
+.adm-nav-item i { width: 18px; text-align: center; }
+.adm-nav-item:hover { background: #1a2741; color: #fff; }
+.adm-nav-item.active {
+  background: linear-gradient(90deg, #1e3a8a, #1e40af);
+  color: #fff;
+  font-weight: 600;
+}
+
+.adm-side-foot { padding-top: 16px; border-top: 1px solid #1e2c4a; }
+.adm-side-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 13px;
+  padding: 8px 12px;
+}
+.adm-side-back:hover { color: #fff; }
+
+/* ── Main content area ── */
+.adm-main { padding: 22px 28px 40px; overflow-x: hidden; }
+
+/* ── Topbar trong main ── */
+.adm-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+.adm-top-title h1 { font-size: 22px; font-weight: 700; }
+.adm-top-sub { color: var(--adm-muted); font-size: 13px; margin-top: 4px; }
+
+.adm-top-right { display: flex; align-items: center; gap: 12px; }
+
+.adm-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--adm-border);
+  border-radius: 10px;
+  padding: 0 12px 0 36px;
+  height: 40px;
+  width: 280px;
+}
+.adm-search i { position: absolute; left: 12px; color: #94a3b8; }
+.adm-search input { border: 0; outline: none; font: inherit; height: 100%; width: 100%; background: transparent; }
+
+.adm-bell {
+  position: relative;
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--adm-border);
+  background: #fff;
+  cursor: pointer;
+  color: #334155;
+}
+.adm-bell .adm-dot {
+  position: absolute;
+  top: 9px; right: 11px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--adm-danger);
+  border: 2px solid #fff;
+}
+
+.adm-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid var(--adm-border);
+  border-radius: 10px;
+  padding: 4px 10px 4px 4px;
+  height: 40px;
+}
+.adm-avatar {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: #dbeafe;
+  color: var(--adm-primary);
+  display: grid; place-items: center;
+  font-weight: 800;
+}
+.adm-user-meta { display: flex; flex-direction: column; line-height: 1.1; }
+.adm-user-meta b { font-size: 13px; }
+.adm-user-meta small { color: var(--adm-muted); font-size: 11px; }
+.adm-logout {
+  border: 0; background: transparent;
+  color: #64748b; cursor: pointer; padding: 6px 8px;
+  border-radius: 6px;
+}
+.adm-logout:hover { background: #fef2f2; color: var(--adm-danger); }
+
+/* ── Stats cards (4 cột) ── */
+.adm-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.adm-stat {
+  display: flex;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid var(--adm-border);
+  border-radius: 14px;
+  padding: 16px;
+  align-items: center;
+}
+.adm-stat-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  font-size: 20px;
+}
+.adm-stat-body { display: flex; flex-direction: column; gap: 2px; }
+.adm-stat-body span { font-size: 12px; color: var(--adm-muted); font-weight: 500; }
+.adm-stat-body b { font-size: 22px; font-weight: 800; color: var(--adm-text); }
+.adm-stat-body small { font-size: 12px; color: var(--adm-ok); font-weight: 600; }
+
+/* Variants màu — quy ước theo loại số liệu */
+.sc-blue   .adm-stat-icon { background: #dbeafe; color: #1d4ed8; }
+.sc-green  .adm-stat-icon { background: #dcfce7; color: #15803d; }
+.sc-orange .adm-stat-icon { background: #fed7aa; color: #c2410c; }
+.sc-purple .adm-stat-icon { background: #ede9fe; color: #6d28d9; }
+
+/* ── Grid 2 cột: bảng + sidebar ── */
+.adm-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+.adm-panel {
+  background: #fff;
+  border: 1px solid var(--adm-border);
+  border-radius: 14px;
+  padding: 18px;
+}
+.adm-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.adm-panel-head h2 { font-size: 15px; font-weight: 700; }
+
+/* ── Table ── */
+.adm-table-wrap { overflow-x: auto; }
+.adm-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.adm-table th, .adm-table td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.adm-table th { color: var(--adm-muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .3px; }
+.adm-table tbody tr:hover { background: #f8fafd; }
+
+/* Pills trạng thái */
+.adm-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.adm-pill.ok     { background: #dcfce7; color: #15803d; }
+.adm-pill.warn   { background: #fef3c7; color: #92400e; }
+.adm-pill.cancel { background: #fee2e2; color: #b91c1c; }
+
+/* ── Bảng xếp hạng khóa học ── */
+.adm-rank { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.adm-rank li {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--adm-border);
+  border-radius: 10px;
+  background: #f8fafd;
+}
+.adm-rank-no {
+  width: 28px; height: 28px;
+  background: var(--adm-primary);
+  color: #fff;
+  border-radius: 8px;
+  display: grid; place-items: center;
+  font-weight: 800; font-size: 12px;
+}
+.adm-rank b { font-size: 13px; display: block; }
+.adm-rank small { color: var(--adm-muted); font-size: 11px; }
+.adm-rank em { font-style: normal; font-weight: 700; color: var(--adm-primary); font-size: 13px; }
+
+/* ============ RESPONSIVE ============ */
+/* Tablet: 4 stats → 2x2, grid 2 cột → 1 cột */
+@media (max-width: 1024px) {
+  .adm-app { grid-template-columns: 72px 1fr; }
+  .adm-side { padding: 18px 8px; }
+  .adm-side-logo { font-size: 0; text-align: center; }
+  .adm-side-logo span { display: none; }
+  .adm-side-logo::before { content: "Q"; font-size: 22px; color: #fff; }
+  .adm-nav-item { justify-content: center; padding: 12px 0; }
+  .adm-nav-item span, .adm-nav-item { font-size: 0; }
+  .adm-nav-item i { font-size: 16px; }
+  .adm-side-back { font-size: 0; justify-content: center; }
+  .adm-side-back i { font-size: 16px; }
+
+  .adm-stats { grid-template-columns: repeat(2, 1fr); }
+  .adm-grid { grid-template-columns: 1fr; }
+  .adm-search { width: 200px; }
+}
+
+/* Mobile: ẩn sidebar, stats 1 cột, ẩn search */
+@media (max-width: 640px) {
+  .adm-app { grid-template-columns: 1fr; }
+  .adm-side { display: none; }
+  .adm-main { padding: 16px; }
+  .adm-stats { grid-template-columns: 1fr; }
+  .adm-search { display: none; }
+  .adm-user-meta { display: none; }
+  .adm-top-title h1 { font-size: 18px; }
+  .adm-login-card { padding: 22px; }
+}

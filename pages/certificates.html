@@ -134,85 +134,8 @@
             <button class="cf-check">Kiểm tra chứng chỉ</button>
           </div>
 
-          <div class="cert-row">
-            <img class="mini-seal ms-red" src="../assets/seal-red.png" alt="Seal đỏ">
-            <div class="cr-info">
-              <div class="cr-level" style="color:#ef3b2e">Chứng chỉ Cấp độ Đỏ</div>
-              <h4>Nhập môn Thương mại điện tử</h4>
-              <small><i class="fa-solid fa-layer-group"></i> Cấp độ cơ bản &nbsp; <i class="fa-solid fa-users"></i> 6 khóa học bắt buộc</small>
-            </div>
-            <div class="cr-score">
-              <small>Điểm đạt</small>
-              <div><b>80</b>/100 <span class="badge-pass">Đạt</span></div>
-              <small>Cấp ngày: 20/05/2024</small>
-            </div>
-            <div class="cr-valid">
-              <small>Hiệu lực đến: 20/05/2026</small>
-              <span class="status-valid"><i class="fa-solid fa-circle"></i> Đang hiệu lực</span>
-            </div>
-            <button class="view-btn">Xem chứng chỉ</button>
-            <button class="more-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-          </div>
-
-          <div class="cert-row">
-            <img class="mini-seal ms-green" src="../assets/seal-green.png" alt="Seal xanh">
-            <div class="cr-info">
-              <div class="cr-level" style="color:#21b14b">Chứng chỉ Cấp độ Xanh</div>
-              <h4>Bán hàng chuyên nghiệp đa kênh</h4>
-              <small><i class="fa-solid fa-layer-group"></i> Cấp độ nâng cao &nbsp; <i class="fa-solid fa-users"></i> 9 khóa học bắt buộc</small>
-            </div>
-            <div class="cr-score">
-              <small>Điểm đạt</small>
-              <div><b>85</b>/100 <span class="badge-pass">Đạt</span></div>
-              <small>Cấp ngày: 15/04/2024</small>
-            </div>
-            <div class="cr-valid">
-              <small>Hiệu lực đến: 15/04/2026</small>
-              <span class="status-valid"><i class="fa-solid fa-circle"></i> Đang hiệu lực</span>
-            </div>
-            <button class="view-btn">Xem chứng chỉ</button>
-            <button class="more-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-          </div>
-
-          <div class="cert-row">
-            <img class="mini-seal ms-gold" src="../assets/seal-gold.png" alt="Seal vàng">
-            <div class="cr-info">
-              <div class="cr-level" style="color:#ffa31a">Chứng chỉ Cấp độ Vàng</div>
-              <h4>Chiến lược tăng trưởng & vận hành</h4>
-              <small><i class="fa-solid fa-layer-group"></i> Cấp độ chuyên gia &nbsp; <i class="fa-solid fa-users"></i> 12 khóa học bắt buộc</small>
-            </div>
-            <div class="cr-score">
-              <small>Điểm đạt</small>
-              <div><b>92</b>/100 <span class="badge-pass">Đạt</span></div>
-              <small>Cấp ngày: 10/03/2024</small>
-            </div>
-            <div class="cr-valid">
-              <small>Hiệu lực đến: 10/03/2026</small>
-              <span class="status-valid"><i class="fa-solid fa-circle"></i> Đang hiệu lực</span>
-            </div>
-            <button class="view-btn">Xem chứng chỉ</button>
-            <button class="more-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-          </div>
-
-          <div class="cert-row">
-            <img class="mini-seal ms-red" src="../assets/seal-red.png" alt="Seal đỏ">
-            <div class="cr-info">
-              <div class="cr-level" style="color:#ef3b2e">Chứng chỉ Cấp độ Đỏ</div>
-              <h4>Livestream bán hàng cơ bản</h4>
-              <small><i class="fa-solid fa-layer-group"></i> Cấp độ cơ bản &nbsp; <i class="fa-solid fa-users"></i> 5 khóa học bắt buộc</small>
-            </div>
-            <div class="cr-score">
-              <small>Điểm đạt</small>
-              <div><b>75</b>/100 <span class="badge-fail">Không đạt</span></div>
-              <small>Cấp ngày: 12/01/2024</small>
-            </div>
-            <div class="cr-valid">
-              <small>Hiệu lực đến: 12/01/2025</small>
-              <span class="status-revoked"><i class="fa-solid fa-circle"></i> Đã thu hồi</span>
-            </div>
-            <button class="view-btn">Xem lý do</button>
-            <button class="more-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-          </div>
+          <!-- Danh sách chứng chỉ — render động từ PublicData.getCertificateRecords() -->
+          <div id="certRows"></div>
         </div>
 
         <!-- RIGHT: violations -->
@@ -267,6 +190,7 @@
     </section>
   </main>
 
+  <script src="../js/public-data.js" defer></script>
   <script src="../js/certificates.js" defer></script>
 </body>
 </html>

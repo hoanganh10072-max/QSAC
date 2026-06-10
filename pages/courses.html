@@ -66,16 +66,14 @@
         </div>
       </div>
 
-      <!-- Course filters -->
+      <!-- Course filters — đồng bộ với category trong admin -->
       <div class="filters">
         <button class="chip active" data-filter="all"><i class="fa-solid fa-grip"></i> Tất cả</button>
         <button class="chip" data-filter="basic"><i class="fa-solid fa-seedling"></i> Cơ bản</button>
         <button class="chip" data-filter="advanced"><i class="fa-solid fa-chart-line"></i> Nâng cao</button>
-        <button class="chip" data-filter="marketing"><i class="fa-solid fa-bullhorn"></i> Marketing</button>
-        <button class="chip" data-filter="livestream"><i class="fa-solid fa-video"></i> Livestream</button>
-        <button class="chip" data-filter="tiktok"><i class="fa-brands fa-tiktok"></i> TikTok Shop</button>
-        <button class="chip" data-filter="shopee"><i class="fa-solid fa-cart-shopping"></i> Shopee</button>
-        <button class="chip" data-filter="lazada"><i class="fa-solid fa-box-open"></i> Lazada</button>
+        <button class="chip" data-filter="marketing"><i class="fa-solid fa-bullhorn"></i> Marketing số</button>
+        <button class="chip" data-filter="legal"><i class="fa-solid fa-scale-balanced"></i> Pháp lý</button>
+        <button class="chip" data-filter="operations"><i class="fa-solid fa-store"></i> Vận hành</button>
         <div class="filter-search">
           <input type="text" placeholder="Tìm khóa học..." aria-label="Tìm khóa học">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -83,168 +81,8 @@
         <button class="sort-btn">Sắp xếp: Mới nhất <i class="fa-solid fa-chevron-down"></i></button>
       </div>
 
-      <!-- Course cards grid -->
-      <div class="cards">
-
-        <article class="course">
-          <div class="thumb">
-            <img src="https://picsum.photos/seed/shopee-az/400/220" alt="Bán hàng Shopee">
-            <span class="tag tag-hot">HOT</span>
-            <button class="save-btn" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            <button class="play-btn" aria-label="Xem thử"><i class="fa-solid fa-play"></i></button>
-          </div>
-          <div class="course-body">
-            <h3>Bán hàng Shopee từ A-Z cho người mới bắt đầu</h3>
-            <div class="meta"><i class="fa-solid fa-user-tie"></i> GV. Trần Thị Hà</div>
-            <div class="meta"><i class="fa-solid fa-clock"></i> 6 tuần · <i class="fa-solid fa-book-open"></i> 24 bài học</div>
-            <div class="rating"><span class="stars">★★★★★</span><span>4.8 (1.240)</span></div>
-            <div class="cprice">1.500.000đ <span class="old-inline">2.000.000đ</span></div>
-            <div class="course-actions">
-              <button class="try-btn">Học thử</button>
-              <a class="detail-btn" href="course-detail.html?id=1">Xem chi tiết</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="course">
-          <div class="thumb">
-            <img src="https://picsum.photos/seed/lazada-sell/400/220" alt="Bán hàng Lazada">
-            <span class="tag tag-bestseller">BESTSELLER</span>
-            <button class="save-btn" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            <button class="play-btn" aria-label="Xem thử"><i class="fa-solid fa-play"></i></button>
-          </div>
-          <div class="course-body">
-            <h3>Bán hàng Lazada hiệu quả và tối ưu doanh thu</h3>
-            <div class="meta"><i class="fa-solid fa-user-tie"></i> GV. Lê Văn Bình</div>
-            <div class="meta"><i class="fa-solid fa-clock"></i> 8 tuần · <i class="fa-solid fa-book-open"></i> 32 bài học</div>
-            <div class="rating"><span class="stars">★★★★★</span><span>4.9 (890)</span></div>
-            <div class="cprice">2.800.000đ <span class="old-inline">3.500.000đ</span></div>
-            <div class="course-actions">
-              <button class="try-btn">Học thử</button>
-              <a class="detail-btn" href="course-detail.html?id=2">Xem chi tiết</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="course">
-          <div class="thumb">
-            <img src="https://picsum.photos/seed/tiktok-content/400/220" alt="TikTok Shop">
-            <span class="tag tag-new">NEW</span>
-            <button class="save-btn" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            <button class="play-btn" aria-label="Xem thử"><i class="fa-solid fa-play"></i></button>
-          </div>
-          <div class="course-body">
-            <h3>TikTok Shop Mastery: Bứt phá doanh số từ nội dung</h3>
-            <div class="meta"><i class="fa-solid fa-user-tie"></i> GV. Phạm Minh Đức</div>
-            <div class="meta"><i class="fa-solid fa-clock"></i> 5 tuần · <i class="fa-solid fa-book-open"></i> 28 bài học</div>
-            <div class="rating"><span class="stars">★★★★☆</span><span>4.7 (620)</span></div>
-            <div class="cprice">1.800.000đ <span class="old-inline">2.500.000đ</span></div>
-            <div class="course-actions">
-              <button class="try-btn">Học thử</button>
-              <a class="detail-btn" href="course-detail.html?id=3">Xem chi tiết</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="course">
-          <div class="thumb">
-            <img src="https://picsum.photos/seed/livestream-sell/400/220" alt="Livestream bán hàng">
-            <button class="save-btn" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            <button class="play-btn" aria-label="Xem thử"><i class="fa-solid fa-play"></i></button>
-            <span class="live-badge"><i class="fa-solid fa-circle"></i> LIVE</span>
-          </div>
-          <div class="course-body">
-            <h3>Livestream bán hàng chuyên nghiệp trên mọi sàn</h3>
-            <div class="meta"><i class="fa-solid fa-user-tie"></i> GV. Nguyễn Tỳ Lan</div>
-            <div class="meta"><i class="fa-solid fa-clock"></i> 5 tuần · <i class="fa-solid fa-book-open"></i> 20 bài học</div>
-            <div class="rating"><span class="stars">★★★★★</span><span>4.8 (530)</span></div>
-            <div class="cprice">1.200.000đ <span class="old-inline">1.800.000đ</span></div>
-            <div class="course-actions">
-              <button class="try-btn">Học thử</button>
-              <a class="detail-btn" href="course-detail.html?id=4">Xem chi tiết</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="course">
-          <div class="thumb">
-            <img src="https://picsum.photos/seed/digital-mkt/400/220" alt="Marketing số">
-            <span class="tag tag-marketing">MARKETING SỐ</span>
-            <button class="save-btn" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            <button class="play-btn" aria-label="Xem thử"><i class="fa-solid fa-play"></i></button>
-          </div>
-          <div class="course-body">
-            <h3>Marketing số & SEO cho sàn thương mại điện tử</h3>
-            <div class="meta"><i class="fa-solid fa-user-tie"></i> GV. Phạm Minh Tuấn</div>
-            <div class="meta"><i class="fa-solid fa-clock"></i> 7 tuần · <i class="fa-solid fa-book-open"></i> 28 bài học</div>
-            <div class="rating"><span class="stars">★★★★☆</span><span>4.7 (654)</span></div>
-            <div class="cprice">2.200.000đ <span class="old-inline">2.800.000đ</span></div>
-            <div class="course-actions">
-              <button class="try-btn">Học thử</button>
-              <a class="detail-btn" href="course-detail.html?id=5">Xem chi tiết</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="course">
-          <div class="thumb">
-            <img src="https://picsum.photos/seed/logistics-wh/400/220" alt="Logistics kho hàng">
-            <button class="save-btn" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            <button class="play-btn" aria-label="Xem thử"><i class="fa-solid fa-play"></i></button>
-          </div>
-          <div class="course-body">
-            <h3>Quản lý kho hàng & Logistics TMĐT hiệu quả</h3>
-            <div class="meta"><i class="fa-solid fa-user-tie"></i> GV. Trần Đức Long</div>
-            <div class="meta"><i class="fa-solid fa-clock"></i> 6 tuần · <i class="fa-solid fa-book-open"></i> 24 bài học</div>
-            <div class="rating"><span class="stars">★★★★☆</span><span>4.6 (521)</span></div>
-            <div class="cprice">1.600.000đ</div>
-            <div class="course-actions">
-              <button class="try-btn">Học thử</button>
-              <a class="detail-btn" href="course-detail.html?id=6">Xem chi tiết</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="course">
-          <div class="thumb">
-            <img src="https://picsum.photos/seed/brand-building/400/220" alt="Xây dựng thương hiệu">
-            <button class="save-btn" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            <button class="play-btn" aria-label="Xem thử"><i class="fa-solid fa-play"></i></button>
-          </div>
-          <div class="course-body">
-            <h3>Xây dựng thương hiệu cá nhân & doanh nghiệp online</h3>
-            <div class="meta"><i class="fa-solid fa-user-tie"></i> GV. Vũ Thị Mai</div>
-            <div class="meta"><i class="fa-solid fa-clock"></i> 8 tuần · <i class="fa-solid fa-book-open"></i> 30 bài học</div>
-            <div class="rating"><span class="stars">★★★★★</span><span>4.8 (389)</span></div>
-            <div class="cprice">2.500.000đ <span class="old-inline">3.200.000đ</span></div>
-            <div class="course-actions">
-              <button class="try-btn">Học thử</button>
-              <a class="detail-btn" href="course-detail.html?id=7">Xem chi tiết</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="course">
-          <div class="thumb">
-            <img src="https://picsum.photos/seed/ads-performance/400/220" alt="Quảng cáo TMĐT">
-            <span class="tag tag-new">NEW</span>
-            <button class="save-btn" aria-label="Lưu"><i class="fa-regular fa-heart"></i></button>
-            <button class="play-btn" aria-label="Xem thử"><i class="fa-solid fa-play"></i></button>
-          </div>
-          <div class="course-body">
-            <h3>Ads & Performance: Tối ưu quảng cáo sàn TMĐT</h3>
-            <div class="meta"><i class="fa-solid fa-user-tie"></i> GV. Ngô Thành Nam</div>
-            <div class="meta"><i class="fa-solid fa-clock"></i> 7 tuần · <i class="fa-solid fa-book-open"></i> 28 bài học</div>
-            <div class="rating"><span class="stars">★★★★★</span><span>4.9 (267)</span></div>
-            <div class="cprice">2.900.000đ</div>
-            <div class="course-actions">
-              <button class="try-btn">Học thử</button>
-              <a class="detail-btn" href="course-detail.html?id=8">Xem chi tiết</a>
-            </div>
-          </div>
-        </article>
-
-      </div>
+      <!-- Course cards grid — render từ PublicData (đồng bộ với admin) -->
+      <div class="cards" id="cardsGrid"></div>
 
       <!-- Lộ trình đề xuất -->
       <section class="paths">
@@ -296,6 +134,7 @@
     </section>
   </main>
 
+  <script src="../js/public-data.js" defer></script>
   <script src="../js/courses.js" defer></script>
 </body>
 </html>

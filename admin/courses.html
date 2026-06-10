@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>QSAC Admin · Khoá học</title>
+
+  <!-- Guard: chặn truy cập khi chưa login, redirect trước khi body render -->
+  <script src="../js/admin-guard.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin-crud.css">
+</head>
+<body>
+  <div class="adm-app">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="adm-side" aria-label="Menu quản trị">
+      <div class="adm-side-logo">QSAC <span>ADMIN</span></div>
+      <nav class="adm-nav">
+        <a class="adm-nav-item" href="dashboard.html"><i class="fa-solid fa-gauge-high"></i> Tổng quan</a>
+        <a class="adm-nav-item" href="courses.html"><i class="fa-solid fa-book-open"></i> Khoá học</a>
+        <a class="adm-nav-item" href="students.html"><i class="fa-solid fa-user-graduate"></i> Học viên</a>
+        <a class="adm-nav-item" href="orders.html"><i class="fa-solid fa-receipt"></i> Đơn hàng</a>
+        <a class="adm-nav-item" href="teachers.html"><i class="fa-solid fa-chalkboard-user"></i> Giảng viên</a>
+        <a class="adm-nav-item" href="certificates.html"><i class="fa-solid fa-certificate"></i> Chứng chỉ</a>
+        <a class="adm-nav-item" href="settings.html"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+      </nav>
+      <div class="adm-side-foot">
+        <a href="../index.html" class="adm-side-back"><i class="fa-solid fa-globe"></i> Xem trang chính</a>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <main class="adm-main">
+
+      <!-- Topbar dùng chung — user info render từ admin-shared.js -->
+      <header class="adm-top">
+        <div class="adm-top-title">
+          <h1>Quản lý khoá học</h1>
+          <p class="adm-top-sub">Thêm, sửa, xoá danh sách khoá học đang đào tạo.</p>
+        </div>
+        <div class="adm-top-right">
+          <div class="adm-user">
+            <span class="adm-avatar" id="admAvatar">A</span>
+            <div class="adm-user-meta">
+              <b id="admName">Quản trị viên</b>
+              <small>admin@qsac.vn</small>
+            </div>
+            <button class="adm-logout" id="logoutBtn" title="Đăng xuất"><i class="fa-solid fa-right-from-bracket"></i></button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page head: tiêu đề + nút Thêm -->
+      <div class="adm-page-head">
+        <div></div>
+        <button class="adm-btn-primary" id="btnAdd"><i class="fa-solid fa-plus"></i> <span class="adm-btn-text">Thêm khoá học</span></button>
+      </div>
+
+      <!-- Toolbar lọc -->
+      <div class="adm-toolbar">
+        <div class="adm-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Tìm theo tên khoá học, giảng viên..." />
+        </div>
+        <select id="filterCategory">
+          <option value="">Tất cả danh mục</option>
+          <option value="basic">Cơ bản</option>
+          <option value="advanced">Nâng cao</option>
+          <option value="marketing">Marketing số</option>
+          <option value="legal">Pháp lý</option>
+          <option value="operations">Vận hành</option>
+        </select>
+        <select id="filterStatus">
+          <option value="">Mọi trạng thái</option>
+          <option value="active">Đang mở</option>
+          <option value="draft">Bản nháp</option>
+        </select>
+        <span class="adm-count" id="rowCount">0 khoá học</span>
+      </div>
+
+      <!-- Bảng dữ liệu -->
+      <section class="adm-panel">
+        <div class="adm-table-wrap">
+          <table class="adm-table">
+            <thead>
+              <tr>
+                <th style="width:64px">Ảnh</th>
+                <th>Tên khoá học</th>
+                <th>Danh mục</th>
+                <th>Giảng viên</th>
+                <th>Giá</th>
+                <th>Tuần</th>
+                <th>Trạng thái</th>
+                <th style="width:96px">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="dataBody"></tbody>
+          </table>
+        </div>
+        <div id="emptyState" class="adm-empty" hidden>
+          <i class="fa-solid fa-folder-open"></i>
+          Không có khoá học nào khớp bộ lọc.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===== MODAL: form thêm/sửa khoá học ===== -->
+  <div class="adm-modal" id="formModal" role="dialog" aria-labelledby="formTitle">
+    <div class="adm-modal-card">
+      <div class="adm-modal-head">
+        <h2 class="adm-modal-title" id="formTitle">Thêm khoá học</h2>
+        <button class="adm-modal-close" data-close-modal="formModal" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="dataForm" class="adm-form-grid" novalidate>
+        <!-- Ảnh khoá học: paste URL hoặc upload file → base64. Để trống cũng được. -->
+        <label class="full">Ảnh khoá học
+          <div class="adm-img-picker">
+            <div class="adm-img-preview" id="imgPreview">
+              <img id="imgPreviewImg" alt="Xem trước ảnh" hidden />
+              <span id="imgPreviewPlaceholder"><i class="fa-solid fa-image"></i>Chưa có ảnh</span>
+            </div>
+            <div class="adm-img-actions">
+              <input type="text" name="image" id="imgUrl" placeholder="Dán URL ảnh (https://...) hoặc tải file" />
+              <div class="adm-img-buttons">
+                <label class="adm-btn">
+                  <i class="fa-solid fa-upload"></i> Tải file
+                  <input type="file" id="imgFile" accept="image/*" hidden />
+                </label>
+                <button type="button" class="adm-btn-ghost" id="imgClear"><i class="fa-solid fa-xmark"></i> Bỏ ảnh</button>
+              </div>
+            </div>
+          </div>
+          <span class="err" data-err="image"></span>
+        </label>
+
+        <label class="full">Tên khoá học
+          <input type="text" name="name" required placeholder="VD: Nhập môn TMĐT" />
+          <span class="err" data-err="name"></span>
+        </label>
+
+        <label>Danh mục
+          <select name="category" required>
+            <option value="">-- Chọn --</option>
+            <option value="basic">Cơ bản</option>
+            <option value="advanced">Nâng cao</option>
+            <option value="marketing">Marketing số</option>
+            <option value="legal">Pháp lý</option>
+            <option value="operations">Vận hành</option>
+          </select>
+          <span class="err" data-err="category"></span>
+        </label>
+
+        <label>Giảng viên
+          <input type="text" name="teacher" required placeholder="GV. Trần Thị Hà" />
+          <span class="err" data-err="teacher"></span>
+        </label>
+
+        <label>Giá (VNĐ)
+          <input type="number" name="price" required min="0" step="1000" placeholder="1500000" />
+          <span class="err" data-err="price"></span>
+        </label>
+
+        <label>Thời lượng (tuần)
+          <input type="number" name="duration" required min="1" max="52" placeholder="6" />
+          <span class="err" data-err="duration"></span>
+        </label>
+
+        <label>Số bài học
+          <input type="number" name="lessons" required min="1" placeholder="24" />
+          <span class="err" data-err="lessons"></span>
+        </label>
+
+        <label>Trạng thái
+          <select name="status">
+            <option value="active">Đang mở</option>
+            <option value="draft">Bản nháp</option>
+          </select>
+        </label>
+
+        <!-- ===== KHAI GIẢNG (tùy chọn — để trống nếu chưa lên lịch) ===== -->
+        <div class="full" style="border-top:1px dashed var(--adm-border,#e2e8f0);margin-top:6px;padding-top:14px">
+          <b style="font-size:14px;color:var(--adm-fg,#0f172a)">Lịch khai giảng</b>
+          <small style="display:block;color:var(--adm-muted,#64748b);margin-top:2px">Để trống nếu chưa lên lịch — khoá sẽ không xuất hiện ở trang Lịch khai giảng.</small>
+        </div>
+
+        <label>Ngày khai giảng
+          <input type="date" name="startDate" />
+          <span class="err" data-err="startDate"></span>
+        </label>
+
+        <label>Số chỗ còn
+          <input type="number" name="seatsLeft" min="0" placeholder="30" />
+        </label>
+
+        <label>Giờ bắt đầu
+          <input type="time" name="timeStart" />
+          <span class="err" data-err="timeStart"></span>
+        </label>
+
+        <label>Giờ kết thúc
+          <input type="time" name="timeEnd" />
+          <span class="err" data-err="timeEnd"></span>
+        </label>
+
+        <label class="full">Nhãn nổi bật
+          <select name="label">
+            <option value="">— Không —</option>
+            <option value="hot">HOT</option>
+            <option value="best">BESTSELLER</option>
+            <option value="new">NEW</option>
+          </select>
+        </label>
+
+        <div class="adm-modal-actions full">
+          <button type="button" class="adm-btn-ghost" data-close-modal="formModal">Huỷ</button>
+          <button type="submit" class="adm-btn-primary"><i class="fa-solid fa-floppy-disk"></i> <span class="adm-btn-text">Lưu</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/admin-shared.js" defer></script>
+  <script src="../js/admin-courses.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>QSAC Admin · Học viên</title>
+  <!-- Guard: chặn truy cập khi chưa login, redirect trước khi body render -->
+  <script src="../js/admin-guard.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin-crud.css">
+</head>
+<body>
+  <div class="adm-app">
+
+    <aside class="adm-side" aria-label="Menu quản trị">
+      <div class="adm-side-logo">QSAC <span>ADMIN</span></div>
+      <nav class="adm-nav">
+        <a class="adm-nav-item" href="dashboard.html"><i class="fa-solid fa-gauge-high"></i> Tổng quan</a>
+        <a class="adm-nav-item" href="courses.html"><i class="fa-solid fa-book-open"></i> Khoá học</a>
+        <a class="adm-nav-item" href="students.html"><i class="fa-solid fa-user-graduate"></i> Học viên</a>
+        <a class="adm-nav-item" href="orders.html"><i class="fa-solid fa-receipt"></i> Đơn hàng</a>
+        <a class="adm-nav-item" href="teachers.html"><i class="fa-solid fa-chalkboard-user"></i> Giảng viên</a>
+        <a class="adm-nav-item" href="certificates.html"><i class="fa-solid fa-certificate"></i> Chứng chỉ</a>
+        <a class="adm-nav-item" href="settings.html"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+      </nav>
+      <div class="adm-side-foot">
+        <a href="../index.html" class="adm-side-back"><i class="fa-solid fa-globe"></i> Xem trang chính</a>
+      </div>
+    </aside>
+
+    <main class="adm-main">
+      <header class="adm-top">
+        <div class="adm-top-title">
+          <h1>Quản lý học viên</h1>
+          <p class="adm-top-sub">Danh sách học viên đang tham gia khoá học.</p>
+        </div>
+        <div class="adm-top-right">
+          <div class="adm-user">
+            <span class="adm-avatar" id="admAvatar">A</span>
+            <div class="adm-user-meta"><b id="admName">Quản trị viên</b><small>admin@qsac.vn</small></div>
+            <button class="adm-logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i></button>
+          </div>
+        </div>
+      </header>
+
+      <div class="adm-page-head">
+        <div></div>
+        <button class="adm-btn-primary" id="btnAdd"><i class="fa-solid fa-plus"></i> <span class="adm-btn-text">Thêm học viên</span></button>
+      </div>
+
+      <div class="adm-toolbar">
+        <div class="adm-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Tìm theo tên, email, sđt..." />
+        </div>
+        <select id="filterStatus">
+          <option value="">Mọi trạng thái</option>
+          <option value="active">Hoạt động</option>
+          <option value="locked">Đã khoá</option>
+        </select>
+        <span class="adm-count" id="rowCount">0 học viên</span>
+      </div>
+
+      <section class="adm-panel">
+        <div class="adm-table-wrap">
+          <table class="adm-table">
+            <thead>
+              <tr>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Điện thoại</th>
+                <th>Tham gia</th>
+                <th>Khoá đã học</th>
+                <th>Trạng thái</th>
+                <th style="width:128px">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="dataBody"></tbody>
+          </table>
+        </div>
+        <div id="emptyState" class="adm-empty" hidden>
+          <i class="fa-solid fa-user-slash"></i>
+          Không có học viên nào khớp bộ lọc.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="adm-modal" id="formModal" role="dialog" aria-labelledby="formTitle">
+    <div class="adm-modal-card">
+      <div class="adm-modal-head">
+        <h2 class="adm-modal-title" id="formTitle">Thêm học viên</h2>
+        <button class="adm-modal-close" data-close-modal="formModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="dataForm" class="adm-form-grid" novalidate>
+        <label class="full">Họ và tên
+          <input type="text" name="name" required placeholder="Nguyễn Văn A" />
+          <span class="err" data-err="name"></span>
+        </label>
+        <label>Email
+          <input type="email" name="email" required placeholder="vd@email.com" />
+          <span class="err" data-err="email"></span>
+        </label>
+        <label>Điện thoại
+          <input type="tel" name="phone" required placeholder="09xxxxxxxx" />
+          <span class="err" data-err="phone"></span>
+        </label>
+        <label>Ngày tham gia
+          <input type="date" name="joinedAt" required />
+          <span class="err" data-err="joinedAt"></span>
+        </label>
+        <label>Số khoá đã học
+          <input type="number" name="coursesCount" min="0" value="0" />
+        </label>
+        <label class="full">Trạng thái
+          <select name="status">
+            <option value="active">Hoạt động</option>
+            <option value="locked">Đã khoá</option>
+          </select>
+        </label>
+        <div class="adm-modal-actions full">
+          <button type="button" class="adm-btn-ghost" data-close-modal="formModal">Huỷ</button>
+          <button type="submit" class="adm-btn-primary"><i class="fa-solid fa-floppy-disk"></i> Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Modal: Xem chi tiết học viên (read-only + khoá/mở khoá tài khoản) ===== -->
+  <div class="adm-modal" id="viewModal" role="dialog">
+    <div class="adm-modal-card">
+      <div class="adm-modal-head">
+        <h2 class="adm-modal-title">Hồ sơ học viên</h2>
+        <button class="adm-modal-close" data-close-modal="viewModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="viewBody" style="padding:8px 4px 16px"></div>
+      <div class="adm-modal-actions">
+        <button type="button" class="adm-btn-ghost" data-close-modal="viewModal">Đóng</button>
+        <button type="button" class="adm-btn-primary danger" id="viewLockBtn"><i class="fa-solid fa-lock"></i> <span id="viewLockLabel">Khoá tài khoản</span></button>
+        <button type="button" class="adm-btn-primary" id="viewEditBtn"><i class="fa-solid fa-pen"></i> Sửa</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/admin-shared.js" defer></script>
+  <script src="../js/admin-students.js" defer></script>
+</body>
+</html>
