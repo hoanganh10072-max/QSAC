@@ -1,0 +1,321 @@
+/* path-detail.css — Trang chi tiết 1 lộ trình học */
+
+.content { padding: 28px 32px 48px; }
+
+
+/* ── HERO HEADER ── */
+.pd-hero {
+  background: linear-gradient(135deg, #eaf2ff, #f7f9fc);
+  border-radius: 18px;
+  padding: 20px 24px 28px;
+  border-left: 6px solid #0b55d9;
+  margin-bottom: 22px;
+}
+.pd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.pd-back:hover { color: #0b55d9; }
+
+.pd-hero-main {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+}
+.pd-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  background: #fff;
+  color: #0b55d9;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  flex-shrink: 0;
+}
+.pd-info { flex: 1; min-width: 0; }
+.pd-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0b55d9;
+  margin-bottom: 8px;
+}
+.pd-info h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: #0e1c2c;
+  line-height: 1.2;
+}
+.pd-info > p {
+  margin: 0 0 14px;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.pd-stats {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.pd-stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #475569;
+}
+.pd-stats span i { color: #0b55d9; }
+.pd-stats span b { color: #0e1c2c; font-weight: 700; }
+
+.pd-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.pd-btn-primary, .pd-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.pd-btn-primary {
+  background: #0b55d9;
+  color: #fff;
+  border: none;
+}
+.pd-btn-primary:hover { background: #084bbf; }
+.pd-btn-outline {
+  background: #fff;
+  color: #475569;
+  border: 1.5px solid #cbd5e1;
+}
+.pd-btn-outline:hover { border-color: #0b55d9; color: #0b55d9; }
+
+
+/* Theme màu theo nền tảng — đổi border-left + icon color của hero */
+.pd-theme-orange { border-left-color: #ea580c; }
+.pd-theme-orange .pd-icon { color: #ea580c; }
+.pd-theme-orange .pd-tag  { color: #ea580c; border-color: #fdba74; }
+
+.pd-theme-purple { border-left-color: #7c3aed; }
+.pd-theme-purple .pd-icon { color: #7c3aed; }
+.pd-theme-purple .pd-tag  { color: #7c3aed; border-color: #c4b5fd; }
+
+.pd-theme-cyan { border-left-color: #0e7490; }
+.pd-theme-cyan .pd-icon { color: #0e7490; }
+.pd-theme-cyan .pd-tag  { color: #0e7490; border-color: #67e8f9; }
+
+.pd-theme-pink { border-left-color: #e11d48; }
+.pd-theme-pink .pd-icon { color: #e11d48; }
+.pd-theme-pink .pd-tag  { color: #e11d48; border-color: #fda4af; }
+
+.pd-theme-blue { border-left-color: #1d4ed8; }
+.pd-theme-blue .pd-icon { color: #1d4ed8; }
+.pd-theme-blue .pd-tag  { color: #1d4ed8; border-color: #93c5fd; }
+
+.pd-theme-green { border-left-color: #16a34a; }
+.pd-theme-green .pd-icon { color: #16a34a; }
+.pd-theme-green .pd-tag  { color: #16a34a; border-color: #86efac; }
+
+
+/* ── SECTION CHUNG ── */
+.pd-section { margin-bottom: 26px; }
+.pd-section-h { margin-bottom: 14px; }
+.pd-section-h h2 {
+  margin: 0 0 4px;
+  font-size: 18px;
+  color: #0e1c2c;
+  font-weight: 700;
+}
+.pd-section-h p { margin: 0; font-size: 13px; color: #64748b; }
+
+
+/* ── COURSE LIST: timeline số thứ tự ── */
+.pd-courses {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pd-course {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid #e8eef6;
+  border-radius: 14px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.pd-course:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+.pd-course-num {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #eaf2ff;
+  color: #0b55d9;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.pd-course-body { flex: 1; min-width: 0; }
+.pd-course-body h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  color: #0e1c2c;
+  font-weight: 700;
+}
+.pd-course-body > p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+}
+.pd-course-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.pd-course-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #64748b;
+}
+.pd-course-meta i { color: #94a3b8; }
+
+/* Nút mua lẻ khóa — 2 dòng: giá + "Mua khóa" */
+.pd-course-buy {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 130px;
+  padding: 10px 14px;
+  border: 1.5px solid #0b55d9;
+  border-radius: 10px;
+  background: #fff;
+  color: #0b55d9;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+.pd-course-buy:hover {
+  background: #0b55d9;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(11, 85, 217, 0.25);
+}
+.pd-course-price {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+.pd-course-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* Course num đổi màu theo theme */
+.pd-course.pd-theme-orange .pd-course-num { background: #ffedd5; color: #ea580c; }
+.pd-course.pd-theme-purple .pd-course-num { background: #ede9fe; color: #7c3aed; }
+.pd-course.pd-theme-cyan   .pd-course-num { background: #cffafe; color: #0e7490; }
+.pd-course.pd-theme-pink   .pd-course-num { background: #ffe4e6; color: #e11d48; }
+.pd-course.pd-theme-blue   .pd-course-num { background: #dbeafe; color: #1d4ed8; }
+.pd-course.pd-theme-green  .pd-course-num { background: #d1fae5; color: #16a34a; }
+
+
+/* ── LỘ TRÌNH LIÊN QUAN ── */
+.pd-related {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.pd-rel-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e8eef6;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.pd-rel-card:hover {
+  border-color: #0b55d9;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+.pd-rel-icon {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: #eaf2ff;
+  color: #0b55d9;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.pd-rel-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.pd-rel-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0b55d9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.pd-rel-body b { font-size: 14px; color: #0e1c2c; font-weight: 700; }
+.pd-rel-meta { font-size: 12px; color: #64748b; }
+.pd-rel-arrow { color: #94a3b8; flex-shrink: 0; }
+
+.pd-rel-card.pd-theme-orange .pd-rel-icon { background: #ffedd5; color: #ea580c; }
+.pd-rel-card.pd-theme-orange .pd-rel-tag  { color: #ea580c; }
+.pd-rel-card.pd-theme-purple .pd-rel-icon { background: #ede9fe; color: #7c3aed; }
+.pd-rel-card.pd-theme-purple .pd-rel-tag  { color: #7c3aed; }
+.pd-rel-card.pd-theme-cyan   .pd-rel-icon { background: #cffafe; color: #0e7490; }
+.pd-rel-card.pd-theme-cyan   .pd-rel-tag  { color: #0e7490; }
+.pd-rel-card.pd-theme-pink   .pd-rel-icon { background: #ffe4e6; color: #e11d48; }
+.pd-rel-card.pd-theme-pink   .pd-rel-tag  { color: #e11d48; }
+.pd-rel-card.pd-theme-blue   .pd-rel-icon { background: #dbeafe; color: #1d4ed8; }
+.pd-rel-card.pd-theme-blue   .pd-rel-tag  { color: #1d4ed8; }
+.pd-rel-card.pd-theme-green  .pd-rel-icon { background: #d1fae5; color: #16a34a; }
+.pd-rel-card.pd-theme-green  .pd-rel-tag  { color: #16a34a; }
+
+
+/* ── RESPONSIVE ── */
+@media (max-width: 850px) {
+  .pd-hero-main { flex-direction: column; }
+  .pd-info h1 { font-size: 22px; }
+  .pd-related { grid-template-columns: 1fr; }
+  .pd-course { flex-wrap: wrap; }
+  .pd-course-buy { width: 100%; flex-direction: row; gap: 12px; }
+}

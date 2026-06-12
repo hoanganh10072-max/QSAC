@@ -262,6 +262,7 @@
   flex-shrink: 0;
 }
 
+.lp-icon-green  { background: #d1fae5; color: #16a34a; }
 .lp-icon-orange { background: #ffedd5; color: #ea580c; }
 .lp-icon-purple { background: #ede9fe; color: #7c3aed; }
 .lp-icon-cyan   { background: #cffafe; color: #0e7490; }
@@ -283,6 +284,7 @@
   white-space: nowrap;
 }
 
+.lp-tag-green  { color: #16a34a; border-color: #86efac; background: #f0fdf4; }
 .lp-tag-orange { color: #ea580c; border-color: #fdba74; background: #fff7ed; }
 .lp-tag-purple { color: #7c3aed; border-color: #c4b5fd; background: #f5f3ff; }
 .lp-tag-cyan   { color: #0e7490; border-color: #67e8f9; background: #ecfeff; }
@@ -359,8 +361,11 @@
 .lp-faces em[data-c="3"] { background: #fbbf24; }
 .lp-faces em[data-c="4"] { background: #34d399; }
 
-/* Nút "Xem chi tiết" — màu theo card */
+/* Nút "Xem chi tiết" — màu theo card. Có thể là <button> hoặc <a>. */
 .lp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 32px;
   padding: 0 16px;
   border: 1.5px solid #16a34a;
@@ -371,10 +376,13 @@
   font-weight: 700;
   cursor: pointer;
   font-family: inherit;
+  text-decoration: none;
   transition: background 0.15s, color 0.15s;
 }
 
 .lp-btn:hover          { background: #16a34a; color: white; }
+.lp-btn-green          { border-color: #16a34a; color: #16a34a; }
+.lp-btn-green:hover    { background: #16a34a; color: white; }
 .lp-btn-orange         { border-color: #ea580c; color: #ea580c; }
 .lp-btn-orange:hover   { background: #ea580c; color: white; }
 .lp-btn-purple         { border-color: #7c3aed; color: #7c3aed; }
@@ -419,6 +427,121 @@
 }
 
 .lp-cert-btn:hover { background: #0647d6; }
+
+
+/* ── EMPTY STATE — hiện khi filter cat × level không khớp card nào ── */
+.lp-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 48px 20px;
+  margin-top: 12px;
+  background: #fff;
+  border: 1px dashed #d6dfeb;
+  border-radius: 16px;
+  text-align: center;
+}
+.lp-empty i { font-size: 32px; color: #94a3b8; }
+.lp-empty b { color: #1e2b3c; font-size: 16px; }
+.lp-empty span { color: #64748b; font-size: 13px; max-width: 360px; }
+.lp-empty[hidden] { display: none; }
+
+
+/* ── 3 SECTION CẤP ĐỘ ──
+   Mỗi section có header riêng (icon + tiêu đề + mô tả) + grid card.
+   Màu phân biệt: Cơ bản (xanh) / Trung cấp (cam) / Nâng cao (đỏ). */
+.lp-section {
+  margin-bottom: 28px;
+}
+.lp-section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #eaf2ff, #f7f9fc);
+  border-radius: 14px;
+  margin-bottom: 14px;
+  border-left: 5px solid #0b55d9;
+}
+.lp-section-head > i {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #0b55d9;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.lp-section-head h2 {
+  margin: 0;
+  font-size: 19px;
+  color: #0e1c2c;
+  font-weight: 700;
+}
+.lp-section-head p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Theme màu cho 3 cấp */
+.lp-section-basic .lp-section-head {
+  background: linear-gradient(135deg, #e8f9f0, #f7f9fc);
+  border-left-color: #15bd6c;
+}
+.lp-section-basic .lp-section-head > i { color: #15bd6c; }
+
+.lp-section-intermediate .lp-section-head {
+  background: linear-gradient(135deg, #fff3df, #f7f9fc);
+  border-left-color: #f59e0b;
+}
+.lp-section-intermediate .lp-section-head > i { color: #f59e0b; }
+
+.lp-section-advanced .lp-section-head {
+  background: linear-gradient(135deg, #ffe5e5, #f7f9fc);
+  border-left-color: #ef4444;
+}
+.lp-section-advanced .lp-section-head > i { color: #ef4444; }
+
+
+/* ── DANH SÁCH KHÓA TRONG CARD (.lp-course-list) ──
+   Thay cho .lp-levels cũ: mỗi card giờ chỉ chứa khóa của 1 cấp. */
+.lp-course-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.lp-course-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #475569;
+  padding: 7px 10px;
+  background: #f7f9fc;
+  border-radius: 8px;
+}
+.lp-course-list li b {
+  font-weight: 600;
+  color: #1e2b3c;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lp-course-list li em {
+  font-style: normal;
+  font-size: 11px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
 
 
 /* ── RESPONSIVE ── */

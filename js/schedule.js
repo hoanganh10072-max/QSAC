@@ -2,6 +2,7 @@
    schedule.js — Trang lịch khai giảng
    Phụ thuộc: public-data.js (PublicData)
    Luồng: PublicData.getSchedule() → render rows → bind events → init calendar
+   Filter: state.level (chip) + state.date (calendar) — applyFilters() gộp 2 nguồn
    ============================================= */
 
 function showToast(msg) {
@@ -31,6 +32,7 @@ const esc = (s) => String(s == null ? '' : s)
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
 const fmtMoney = (n) => Number(n || 0).toLocaleString('vi-VN') + 'đ';
+const pad2 = n => (n < 10 ? '0' : '') + n;
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -79,16 +81,77 @@ document.addEventListener('DOMContentLoaded', () => {
       '</div>';
   }
 
+  // ── STATE + BANNER + APPLY FILTERS ──
+  // State gộp 2 nguồn filter: level chip + ngày calendar
+  let cal = null;
+  const state = { level: 'all', date: null }; // date: {day, month, year} | null
+
+  const filterInfo = document.createElement('div');
+  filterInfo.className = 'sched-date-filter-info';
+  filterInfo.style.display = 'none';
+  listEl.parentNode.insertBefore(filterInfo, listEl);
+
+  function applyFilters() {
+    let visible = 0;
+    listEl.querySelectorAll('.sched-row').forEach(row => {
+      const okLevel = state.level === 'all' || row.dataset.level === state.level;
+      let okDate = true;
+      if (state.date) {
+        const txt = row.querySelector('.sched-date b')?.textContent || '';
+        const m = txt.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+        okDate = !!m && +m[1] === state.date.day && +m[2] === state.date.month && +m[3] === state.date.year;
+      }
+      const show = okLevel && okDate;
+      row.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    // Banner thông báo lọc theo ngày
+    if (state.date) {
+      const ds = pad2(state.date.day) + '/' + pad2(state.date.month) + '/' + state.date.year;
+      filterInfo.innerHTML =
+        '<span><i class="fa-regular fa-calendar"></i> Đang lọc theo ngày <b>' + ds + '</b> · ' + visible + ' khoá học</span>' +
+        '<button class="sched-clear-date">Xoá lọc <i class="fa-solid fa-xmark"></i></button>';
+      filterInfo.style.display = '';
+    } else {
+      filterInfo.innerHTML = '';
+      filterInfo.style.display = 'none';
+    }
+
+    // Empty state nội dòng khi không có row nào match
+    let emptyEl = listEl.querySelector('.sched-empty');
+    if (visible === 0 && schedules.length) {
+      if (!emptyEl) {
+        emptyEl = document.createElement('p');
+        emptyEl.className = 'sched-empty';
+        emptyEl.style.cssText = 'text-align:center;padding:30px;color:#64748b;font-size:13px;margin:0;';
+        listEl.appendChild(emptyEl);
+      }
+      emptyEl.textContent = state.date
+        ? 'Không có khoá học nào khai giảng vào ngày đã chọn.'
+        : 'Không có khoá học khớp bộ lọc.';
+      emptyEl.style.display = '';
+    } else if (emptyEl) {
+      emptyEl.style.display = 'none';
+    }
+  }
+
+  // Xoá lọc ngày từ banner
+  filterInfo.addEventListener('click', e => {
+    if (!e.target.closest('.sched-clear-date')) return;
+    state.date = null;
+    if (cal) cal.rerender();
+    applyFilters();
+  });
+
   // ── FILTER CHIPS (theo data-filter level) ──
   const chips = document.querySelectorAll('.sched-chips .chip');
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
       chips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
-      const f = chip.dataset.filter || 'all';
-      listEl.querySelectorAll('.sched-row').forEach(row => {
-        row.style.display = (f === 'all' || row.dataset.level === f) ? '' : 'none';
-      });
+      state.level = chip.dataset.filter || 'all';
+      applyFilters();
     });
   });
 
@@ -105,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── ĐĂNG KÝ NGAY → register.html (register page chưa nhận sch-id) ──
+  // ── ĐĂNG KÝ NGAY → register.html ──
   listEl.querySelectorAll('.reg-btn').forEach(btn => {
     btn.addEventListener('click', () => { window.location.href = 'register.html'; });
   });
@@ -128,60 +191,69 @@ document.addEventListener('DOMContentLoaded', () => {
     sel.addEventListener('click', () => showToast('Bộ lọc sẽ sớm ra mắt!'));
   });
 
-  // ── MINI CALENDAR (đọc events từ rows đã render) ──
-  initCalendar();
+  // ── MINI CALENDAR ──
+  // Click ngày có khai giảng → set state.date → applyFilters lọc list bên trái.
+  // Click lại đúng ngày đang chọn → bỏ lọc.
+  cal = initCalendar({
+    getSelectedDate: () => state.date,
+    onDayClick: (date) => {
+      const same = state.date
+        && state.date.day === date.day
+        && state.date.month === date.month
+        && state.date.year === date.year;
+      state.date = same ? null : date;
+      applyFilters();
+    }
+  });
 });
 
-/* Render mini calendar bên sidebar:
-   - Đọc event từ các .sched-row (cột ngày khai giảng dạng DD/MM/YYYY)
-   - Cho phép chuyển tháng bằng nút ‹ ›
-   - Click ngày có khai giảng → scroll + flash row tương ứng */
-function initCalendar() {
-  const monthLabel = document.getElementById('calMonthLabel') || document.querySelector('.cal-month-nav span');
-  const daysWrap   = document.getElementById('calDays') || document.querySelector('.cal-days');
+/* Render mini calendar bên sidebar.
+   opts.getSelectedDate() → trả {day,month,year}|null để mark class .selected
+   opts.onDayClick(date)  → gọi khi click ngày có khai giảng
+   Trả {rerender} để parent có thể yêu cầu vẽ lại (vd: khi clear filter) */
+function initCalendar(opts) {
+  opts = opts || {};
+  const monthLabel = document.getElementById('calMonthLabel');
+  const daysWrap   = document.getElementById('calDays');
   const navBtns    = document.querySelectorAll('.cal-nav');
-  if (!monthLabel || !daysWrap || navBtns.length !== 2) return;
+  if (!monthLabel || !daysWrap || navBtns.length !== 2) return null;
 
-  // Thu thập events từ DOM rows — mỗi event giữ tham chiếu row để scroll/flash
+  // Thu thập events từ DOM rows
   const events = [];
   document.querySelectorAll('.sched-row').forEach(row => {
     const txt = row.querySelector('.sched-date b')?.textContent || '';
     const m = txt.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
-    if (m) events.push({ day: +m[1], month: +m[2], year: +m[3], row });
+    if (m) events.push({ day: +m[1], month: +m[2], year: +m[3] });
   });
 
-  // Tháng khởi đầu = tháng của event đầu (nếu có), fallback hôm nay
   const init = events[0]
     ? new Date(events[0].year, events[0].month - 1, 1)
     : new Date();
   let viewY = init.getFullYear();
-  let viewM = init.getMonth() + 1; // 1-12
+  let viewM = init.getMonth() + 1;
 
-  // Tham chiếu ngày hôm nay để gắn class .today nếu trùng tháng đang xem
   const now = new Date();
   const tD = now.getDate(), tM = now.getMonth() + 1, tY = now.getFullYear();
-  const pad2 = n => (n < 10 ? '0' : '') + n;
+  const p2 = n => (n < 10 ? '0' : '') + n;
 
   function render() {
-    monthLabel.textContent = `Tháng ${pad2(viewM)}/${viewY}`;
+    monthLabel.textContent = `Tháng ${p2(viewM)}/${viewY}`;
     const firstDay = new Date(viewY, viewM - 1, 1);
     const daysInMonth = new Date(viewY, viewM, 0).getDate();
-    // Lưới bắt đầu T2; getDay(): 0=CN..6=T7 → chuyển 1..7 → 0..6 với offset
     let offset = firstDay.getDay() - 1;
     if (offset < 0) offset = 6;
 
-    // Map ngày-có-khai-giảng của tháng đang xem
-    const evMap = {};
-    events.forEach(e => {
-      if (e.year === viewY && e.month === viewM) evMap[e.day] = e;
-    });
+    const evSet = new Set();
+    events.forEach(e => { if (e.year === viewY && e.month === viewM) evSet.add(e.day); });
+    const sel = opts.getSelectedDate ? opts.getSelectedDate() : null;
 
     let html = '';
     for (let i = 0; i < offset; i++) html += '<span class="empty"></span>';
     for (let d = 1; d <= daysInMonth; d++) {
       const cls = [];
-      if (evMap[d]) cls.push('ev');
+      if (evSet.has(d)) cls.push('ev');
       if (d === tD && viewM === tM && viewY === tY) cls.push('today');
+      if (sel && sel.day === d && sel.month === viewM && sel.year === viewY) cls.push('selected');
       html += `<span class="${cls.join(' ')}" data-day="${d}">${d}</span>`;
     }
     daysWrap.innerHTML = html;
@@ -198,17 +270,14 @@ function initCalendar() {
     render();
   });
 
-  // Click ngày có .ev → scroll + flash row tương ứng
   daysWrap.addEventListener('click', e => {
     const cell = e.target.closest('span.ev');
     if (!cell) return;
     const day = +cell.dataset.day;
-    const ev = events.find(x => x.day === day && x.month === viewM && x.year === viewY);
-    if (!ev) return;
-    ev.row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    ev.row.classList.add('sched-row-flash');
-    setTimeout(() => ev.row.classList.remove('sched-row-flash'), 1400);
+    if (opts.onDayClick) opts.onDayClick({ day, month: viewM, year: viewY });
+    render();
   });
 
   render();
+  return { rerender: render };
 }

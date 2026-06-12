@@ -388,18 +388,49 @@
 }
 .cal-days span.today::after { background: #fff; }
 
-/* Flash highlight cho row khi click ngày có khai giảng */
-@keyframes schedRowFlash {
-  0%, 100% {
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(22, 48, 99, 0.04);
-  }
-  30% {
-    background: #fffbeb;
-    box-shadow: 0 0 0 3px #fbbf24, 0 8px 22px rgba(22, 48, 99, 0.12);
-  }
+/* Ngày đang được chọn để lọc — override cả .today */
+.cal-days span.selected,
+.cal-days span.selected.today {
+  background: #ff6537;
+  color: #fff;
+  font-weight: 700;
 }
-.sched-row-flash { animation: schedRowFlash 1.4s ease; }
+.cal-days span.selected::after { background: #fff; }
+
+/* Banner thông báo đang lọc theo ngày — hiện trên đầu danh sách */
+.sched-date-filter-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: #eef4ff;
+  border: 1px solid #c7dbff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #1e3a8a;
+  flex-wrap: wrap;
+}
+.sched-date-filter-info b { color: #0b55ee; }
+.sched-date-filter-info > span i { color: #0b55ee; margin-right: 6px; }
+
+.sched-clear-date {
+  background: #0b55ee;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.sched-clear-date:hover { background: #0646d6; }
 
 .cal-legend {
   display: flex;

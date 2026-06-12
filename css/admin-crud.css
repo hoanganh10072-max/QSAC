@@ -332,6 +332,44 @@
 }
 
 /* ── Responsive ── */
+/* ── PILL: chip nhỏ hiển thị nền tảng & cấp độ trong table lộ trình ── */
+.adm-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #f1f5f9;
+  color: #475569;
+  white-space: nowrap;
+}
+.adm-pill i { font-size: 11px; }
+.adm-pill-orange { background: #ffedd5; color: #ea580c; }
+.adm-pill-purple { background: #ede9fe; color: #7c3aed; }
+.adm-pill-cyan   { background: #cffafe; color: #0e7490; }
+.adm-pill-pink   { background: #ffe4e6; color: #e11d48; }
+.adm-pill-blue   { background: #dbeafe; color: #1d4ed8; }
+.adm-pill-green  { background: #d1fae5; color: #16a34a; }
+
+/* Pill cấp độ — xanh/cam/đỏ thể hiện độ khó tăng dần */
+.adm-pill-lv-basic        { background: #ecfdf5; color: #15803d; }
+.adm-pill-lv-intermediate { background: #fef3c7; color: #b45309; }
+.adm-pill-lv-advanced     { background: #fee2e2; color: #b91c1c; }
+
+/* Cột mô tả khoá học — cắt ngắn dài quá 2 dòng */
+.adm-note-cell {
+  max-width: 360px;
+  color: #64748b;
+  font-size: 13px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
 @media (max-width: 768px) {
   .adm-form-grid { grid-template-columns: 1fr; }
   .adm-settings-grid { grid-template-columns: 1fr; }

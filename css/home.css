@@ -1,7 +1,28 @@
 /* =============================================
    home.css — Styles riêng cho trang index.html
-   Thứ tự: topbar → hero → filters → cards → benefits → responsive
+   Thứ tự: top-banner → topbar → hero → filters → cards → benefits → responsive
    ============================================= */
+
+
+/* ── TOP BANNER (ảnh full-width phía trên menu) ── */
+.top-banner {
+  width: 100%;
+  background: #0e4ea8; /* màu nền khớp ảnh tránh viền trắng khi ảnh chưa load */
+  line-height: 0; /* tránh khoảng trắng dưới ảnh inline */
+}
+
+.top-banner a {
+  display: block;
+}
+
+.top-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* giới hạn chiều cao để không chiếm quá nhiều màn hình desktop */
+  object-fit: cover;
+  object-position: center;
+}
 
 
 /* ── TOPBAR ── */
